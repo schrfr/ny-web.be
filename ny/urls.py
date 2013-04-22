@@ -8,14 +8,14 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^admin/filebrowser/', include('filebrowser.urls')),
-    (r'^admin/(.*)', admin.site.root),
+    (r'^admin/(.*)', admin.site.urls),
     (r'^comments/', include('django.contrib.comments.urls')),
     (r'^tinymce/', include('tinymce.urls')),
     url(r'^share/(?P<slug>[-\w]+)/$', 'share.views.share', name="ny-share"),
 )
 
 urlpatterns += patterns('django.contrib.syndication.views',
-    url(r'^feeds/latest/$', LatestEntries(), name="ny-feeds"),
+    url(r'^feeds/latest/$', LatestEntries(), name="ny-feed-latest"),
 )
 
 urlpatterns += patterns('ny.views',
