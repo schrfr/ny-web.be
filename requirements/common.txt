@@ -10,3 +10,5 @@ feedparser==5.0.1
 python-dateutil==2.0
 sorl-thumbnail==3.2.5
 wsgiref==0.1.2
+-e git://github.com/HonzaKral/django-threadedcomments.git@661ba2b2e0c1461983844b564e17bad12e22b5db#egg=django_threadedcomments-dev
+

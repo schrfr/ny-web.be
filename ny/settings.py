@@ -137,8 +137,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # 'django.contrib.flatpages',
     'django.contrib.markup',
-    'django.contrib.comments',
     'threadedcomments',
+    'django.contrib.comments',
     # 'textcomments', # override built-in comments
     'django.contrib.humanize',
     'django_extensions',
