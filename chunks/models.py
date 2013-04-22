@@ -11,10 +11,10 @@ class Chunk(models.Model):
     """
     key = models.CharField(help_text="A unique name for this chunk of content", blank=False, max_length=255, unique=True)
     content = models.TextField(blank=True)
-
-    def __unicode__(self):
-        return u"%s" % (self.key,)
     
     class Meta:
         verbose_name = _('About Page')
         verbose_name_plural = _('About Page')
+
+    def __unicode__(self):
+        return u"%s" % (self.key,)

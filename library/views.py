@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render_to_response, get_object_or_404
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404
 from django.template import RequestContext
-
-from django.contrib.comments.models import Comment
-from django.contrib.contenttypes.models import ContentType
 
 from django.views.generic.list_detail import object_list
 from django.db.models import Q
 
 import datetime
 
-from models import *
+from models import Zone, StickyText, Keyword, DocumentType, Text, Language
 from people.models import Person
 
 

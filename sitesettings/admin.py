@@ -1,7 +1,6 @@
 from django.contrib import admin
-from django.core.files.images import get_image_dimensions
 from sitesettings.models import SiteSettings
-from forms import *
+from forms import SiteSettingsForm
 
 
 class SiteSettingsAdmin(admin.ModelAdmin):

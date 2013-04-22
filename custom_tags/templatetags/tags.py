@@ -1,4 +1,4 @@
-from django.template import Library, Node
+from django.template import Library, Node, TemplateSyntaxError
 from library.models import Keyword, DocumentType, Language
 from people.models import Person
 

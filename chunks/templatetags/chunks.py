@@ -2,10 +2,13 @@ from django import template
 from django.db import models
 from django.core.cache import cache
 
+
 register = template.Library()
+
 
 Chunk = models.get_model('chunks', 'chunk')
 CACHE_PREFIX = "chunk_"
+
 
 def do_get_chunk(parser, token):
     # split_contents() knows not to split quoted strings.
@@ -22,7 +25,8 @@ def do_get_chunk(parser, token):
         raise template.TemplateSyntaxError, "%r tag's argument should be in quotes" % tag_name
     # Send key without quotes and caching time
     return ChunkNode(key[1:-1], cache_time)
-    
+
+
 class ChunkNode(template.Node):
     def __init__(self, key, cache_time=0):
        self.key = key
@@ -39,5 +43,6 @@ class ChunkNode(template.Node):
         except Chunk.DoesNotExist:
             content = ''
         return content
-        
+
+
 register.tag('chunk', do_get_chunk)

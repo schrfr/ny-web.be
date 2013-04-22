@@ -1,31 +1,7 @@
-# TODO: delete
-
-
-# from models import *
-# from django.forms import ModelForm
-# from django.db.models import Q
-# 
-# class StickyTextForm(ModelForm):
-#     def __init__(self,*args,**kwargs):
-#         super (StickyTextForm,self ).__init__(*args,**kwargs) # populates the post
-#         try:
-#             self.instance.zone
-#             try:
-#                 self.fields['text'].queryset = Text.objects.filter(Q(zone=self.instance.zone) | Q(zone__parent=self.instance.zone))
-#             except:
-#                 self.fields['text'].queryset = Text.objects.none()
-#         except:
-#             try:
-#                 self.fields['text'].queryset = Text.objects.filter(Q(zone__id=self.data['zone']) | Q(zone__parent__id=self.data['zone']))
-#             except:
-#                 self.fields['text'].queryset = Text.objects.none()
-#     
-#     class Meta:
-#         model = StickyText
-
-from models import *
+from library.models import Text, StickyText
 from django import forms
-from django.db.models import Q
+from django.forms.util import ErrorList
+
 
 class StickyTextForm(forms.ModelForm):
     """
@@ -89,4 +65,3 @@ class TextForm(forms.ModelForm):
             '/static/js/menu-sort.js',
             '/static/js/delete-paragraphs.js',
         )
-

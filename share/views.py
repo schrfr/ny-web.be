@@ -1,11 +1,11 @@
 # TODO: only what is necessary 
-from django.http import *
-from django.shortcuts import *
+from django.http import HttpResponse
+from django.shortcuts import render_to_response
 # TODO: use requestcontext instead
 from django.conf import settings 
 
 from library.models import Text
-from forms import *
+from forms import ShareForm
 
 
 def share(request, slug):

@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
 from tinymce import models as tinymce_models
 from filebrowser.fields import FileBrowseField

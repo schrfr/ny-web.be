@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django import forms
-from django.forms.util import ErrorList
-from library.models import *
-from library.forms import *
+from library.models import Zone, Language, RelatedText, Paragraph, Keyword, DocumentType, Text, StickyText
+from library.forms import StickyTextForm, TextForm
 
 
 class ZoneAdmin(admin.ModelAdmin):

@@ -1,7 +1,4 @@
-# app/templatetags/basic.py
 from django import template
-from django.utils.encoding import smart_unicode
-# from lib.utils import string_to_list, string_to_dict, get_query_string
 from django.utils.safestring import mark_safe
 
 
@@ -26,7 +23,7 @@ def query_string(context, add=None, remove=None):
     response = get_query_string(params, add, remove)
     return {'response': response }
     
-# lib/utils.py
+
 def get_query_string(p, new_params=None, remove=None):
     """
     Add and remove query parameters. From `django.contrib.admin`.

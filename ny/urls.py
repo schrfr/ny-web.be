@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns, include, url
 from django.conf import settings
 from library.feeds import LatestEntries
 from hardcopies.models import PrintIssue

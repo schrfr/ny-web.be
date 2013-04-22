@@ -2,7 +2,7 @@
 # Django settings for ny project.
 
 import os.path
-from django.utils.translation import ugettext_lazy as _
+import os
 
 LOCAL_DEV = True
 DEBUG = True
@@ -10,12 +10,11 @@ TEMPLATE_DEBUG = DEBUG
 
 
 ADMINS = (
-    ('Alexandre Leray', 'contact@alexandreleray.com'),
+    ('Alexandre Leray', 'alexandre@stdin.fr'),
 )
 
 MANAGERS = ADMINS
 
-import os
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 DATABASES = {
@@ -24,12 +23,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
     }
 }
-#DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-#DATABASE_NAME = 'ny-ny_ny'             # Or path to database file if using sqlite3.
-#DATABASE_USER = 'ny-ny'             # Not used with sqlite3.
-#DATABASE_PASSWORD = 'xoHdr5l2'         # Not used with sqlite3.
-#DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-#DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -139,7 +132,6 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'threadedcomments',
     'django.contrib.comments',
-    # 'textcomments', # override built-in comments
     'django.contrib.humanize',
     'django_extensions',
     'tinymce',

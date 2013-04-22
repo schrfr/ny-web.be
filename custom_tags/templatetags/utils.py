@@ -1,8 +1,8 @@
-from django.template import Library, Node, VariableDoesNotExist, Variable
-from django.template.defaultfilters import stringfilter
+from django.template import Library
 import re
 from datetime import datetime
 import time
+from django import template
 
 
 register = Library()
@@ -22,7 +22,6 @@ register.filter('wrapimages', wrapimages)
 wrapimages.is_safe = True
 
 
-from django import template
 
 class AssignNode(template.Node):
     def __init__(self, name, value):

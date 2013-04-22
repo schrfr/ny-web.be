@@ -1,6 +1,6 @@
 from django.contrib import admin
-from models import *
-from forms import PrintIssueForm
+from hardcopies.models import PrintIssue, PrintIssueOnlineText
+from hardcopies.forms import PrintIssueForm
 
 
 class PrintIssueOnlineTextInline(admin.StackedInline):
@@ -24,4 +24,5 @@ class PrintIssueAdmin(admin.ModelAdmin):
         }),
     )
     
+
 admin.site.register(PrintIssue, PrintIssueAdmin, form=PrintIssueForm)
