@@ -30,7 +30,7 @@
     <div class="section">
         <div class="column500" id="preview-comment-form">
             <div class="content">
-                <form action="{% comment_form_target %}" method="post">
+                <form action="{% comment_form_target %}" method="post">{% csrf_token %}
                     
                     {% if next %}
                         <input type="hidden" name="next" value="{{ next }}" />

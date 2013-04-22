@@ -18,12 +18,12 @@ MANAGERS = ADMINS
 import os
 DIRNAME = os.path.abspath(os.path.dirname(__file__))
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = os.path.join(DIRNAME, 'ny.db') # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASES = {
+    'default': {
+        'NAME': os.path.join(DIRNAME, 'ny.db'),
+        'ENGINE': 'django.db.backends.sqlite3',
+    }
+}
 #DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 #DATABASE_NAME = 'ny-ny_ny'             # Or path to database file if using sqlite3.
 #DATABASE_USER = 'ny-ny'             # Not used with sqlite3.
@@ -89,6 +89,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware'
 )
 
 ROOT_URLCONF = 'ny.urls'

@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
+from library.feeds import LatestEntries
+from hardcopies.models import PrintIssue
 
 from django.contrib import admin
 admin.autodiscover()
@@ -12,10 +14,8 @@ urlpatterns = patterns('',
     url(r'^share/(?P<slug>[-\w]+)/$', 'share.views.share', name="ny-share"),
 )
 
-from library.feeds import LatestEntries
-feeds = { 'latest': LatestEntries }
 urlpatterns += patterns('django.contrib.syndication.views',
-    url(r'^feeds/(?P<url>.*)/$', 'feed', { 'feed_dict': feeds }, name="ny-feeds"),
+    url(r'^feeds/latest/$', LatestEntries(), name="ny-feeds"),
 )
 
 urlpatterns += patterns('ny.views',
@@ -24,7 +24,6 @@ urlpatterns += patterns('ny.views',
 )
 
 try: # Returns the absolute URL of the last PrintIssue
-    from hardcopies.models import PrintIssue
     last_issue = PrintIssue.objects.order_by('-pub_date')[0]
     last_issue_url = last_issue.get_absolute_url();
 except: # Redirects to the home page

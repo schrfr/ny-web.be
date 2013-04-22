@@ -176,7 +176,7 @@
                     {% include 'new-comment-form.html' %}
                 {% else %}
                     <div style="margin-top: 34px">
-                        <a href='{% query_string "" "cc, cp, ct" %}ct={{ text.id }}#add-comment'>
+                        <a href='{% query_string "" "view, cc, cp, ct" %}view={{view}}&amp;ct={{ text.id }}#add-comment'>
                             Write a general comment
                         </a>
                     </div>
