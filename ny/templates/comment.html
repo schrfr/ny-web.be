@@ -1,0 +1,9 @@
+{% load comments %}
+
+{% get_comment_list for parent_comment as comment_list %}
+{% for comment in comment_list %}
+        <div class="comment-reply" id="comment-{{comment.id}}">
+            {% include "comment-shared.html" %}
+        </div>
+{% endfor %}
+

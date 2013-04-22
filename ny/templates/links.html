@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load comments %}
+{% load humanize %}
+{% load recurse %}
+{% load markup %}
+{% load tags %}
+
+{% block path %}<h1>Links/</h1>{% endblock %}
+
+{% block subpath %}
+    {% if subpath %}
+        <h2>{{ subpath }}</h2>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div id="links">
+    <div class="column500">
+        <div class="content">
+    
+            {% regroup links by category as link_list %}
+    
+            {% for category in link_list %}
+                <h3>{{ category.grouper }}</h3>
+                <ul>
+                    {% for link in category.list %}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+    
+        </div>
+    </div>
+    
+    {% ifnotequal text.document_type.name 'Poetry' %}
+        {% include 'small-banners.html' %}
+    {% endifnotequal %}
+    
+    
+</div>
+{% endblock content %}

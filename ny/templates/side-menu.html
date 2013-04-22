@@ -1,0 +1,39 @@
+<div class="content">
+    
+    {% if tags %}
+        <h3 class='h3-regular'>Tags/</h3>
+        <ul class="side-menu">
+            {% for tag in tags %}
+                <li><a href="{% url ny-list-filtered zone.identifier 'tag' tag.identifier %}">{{ tag.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    {% if authors %}
+        <h3 class='h3-regular'>Authors/</h3>
+        <ul class="side-menu">
+            {% for author in authors %}
+                 <li><a href="{% url ny-list-filtered zone.identifier 'author' author.slug %}">{{ author.full_name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    {% if types %}
+        <h3 class='h3-regular'>Types/</h3>
+        <ul class="side-menu">
+            {% for type in types %}
+                 <li><a href="{% url ny-list-filtered zone.identifier 'type' type.identifier %}">{{ type.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    {% if languages %}
+        <h3 class='h3-regular'>Languages/</h3>
+        <ul class="side-menu">
+            {% for language in languages %}
+                 <li><a href="{% url ny-list-filtered zone.identifier 'language' language.identifier %}">{{ language.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+</div>

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block path %}<h1>Print Issues/</h1>{% endblock %}
+{# {% block subpath %} #}
+{#     <h2>nY #{{ current_issue.number }}, Vlaam Hotelwezen</h2> #}
+{# {% endblock %} #}
+
+{% block extrastyle %}
+    <style type="text/css" media="screen">
+        h3 { margin-bottom: 17px; }
+        dl { width: 97px; }
+        .cover_thumbnail { float: left; margin: 0 17px 17px 0 ; }
+        .cover_thumbnail img { border: 1px solid #999; }
+        dl img { height: 136px; }
+        dl a { text-decoration: none; }
+    </style>
+{% endblock extrastyle %}
+
+{% block content %}
+<div id="current-issue" class="column500">
+    <div class="content">
+        <h2>#{{ current_issue.number }}</h2>                
+        <p class="title">{{ current_issue.title }}</p>
+            <img id="current-cover" src="{{ current_issue.cover.medium }}" alt="nY #{{ current_issue.number }} {{ current_issue.title }}" />            
+    <br style="clear: both;" />
+            <div id="description">
+                {{ current_issue.summary|safe }}
+            </div>
+
+            {% if online_texts %}
+
+            <div id="online-texts">
+                <h1>Online Texts/</h1>
+                {% regroup online_texts by pub_date as text_list %}
+                {% for pub_date in text_list %}
+                    <div class="entries-date">
+                        <p> {{ pub_date.grouper|date:'d' }}</p>
+                        <p> {{ pub_date.grouper|date:'m' }}</p>
+                        <p>'{{ pub_date.grouper|date:'y' }}</p>
+                    </div>
+                    {% for text in pub_date.list %}
+                         {% include "timeline-entry.html" %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            {% endif %}
+    </div>
+
+</div>
+<div id="other-issues" class="column500">
+    <div class="content">
+        {% for other_issue in other_issues  %}
+            <dl class="cover_thumbnail">
+                <dt>
+                    <a href="{{other_issue.get_absolute_url}}">
+                        <img src="{{ other_issue.cover.small }}" alt="#{{ other_issue.number }} {{ other_issue.title }}"/>
+                    </a>
+                </dt>
+                <dd><p class="number"><a href="{{other_issue.get_absolute_url}}">#{{ other_issue.number }}</a></p>
+                    <p class="title"><a href="{{other_issue.get_absolute_url}}">{{ other_issue.title }}</a></p></dd>
+            </dl>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,35 @@
+/*
+Base font size is 14px;
+Base line height is 17px
+Base gutter is is 17px
+*/
+
+body { font-size: 14px; line-height: 17px; }
+
+#page { max-width: 80em; margin: 2em 4em; }
+
+#header { margin-bottom: 102px; margin-top: 0; border-top: 1px solid white;}
+
+.column20, .column40, .column60, .column80, .column25, .column50, .column33, .column66 { float: left; }
+
+.column20 { width: 20%; }
+.column40 { width: 40%; }
+.column60 { width: 60%; }
+.column80 { width: 80%; }
+.column25 { width: 25%; }
+.column50 { width: 50%; }
+.column33 { width: 33.333%; }
+.column66 { width: 66.666%; }
+
+.column-content { margin: 0 17px; }
+
+table { width: 100%; border-collapse:collapse; }
+#selected-table, #timeline-table, #article-table, #article { margin-top: 17px; }
+#selected-table td, #timeline-table td, #article-table td { padding: 0 17px; vertical-align: top; padding-bottom: 17px; }
+#selected-table td, #timeline-table td { width: 20%; }
+#article-table td { width: 50%; }
+
+#timeline-header li { float: left; width: 25%;  }
+#timele-header li a { margin: 0 1em;}
+.section { clear:both; }
+

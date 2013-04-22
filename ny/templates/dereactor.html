@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% load comments %}
+{% load humanize %}
+{% load recurse %}
+{% load markup %}
+{% load tags %}
+{% load utils %}
+
+{% block path %}<h1>{{ path }}</h1>{% endblock %}
+
+{% block subpath %}
+    {% if subpath %}
+        <h2>{{ subpath }}</h2>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div id="dereactor">
+    <div class="column500">
+        <div class="content">
+            
+            {% for entry in channels.entries %}
+                {% ifchanged entry.updated_parsed %}
+                    <div class="entries-date">
+                        <p> {{ entry.updated_parsed|todatetime|date:'d' }}</p>
+                        <p> {{ entry.updated_parsed|todatetime|date:'m' }}</p>
+                        <p>'{{ entry.updated_parsed|todatetime|date:'y' }}</p>
+                    </div>
+                {% endifchanged %}
+                
+                <div class="timeline-entry">
+                
+                    {# {% if text.id|in_list:stickies %} #}
+                        <p class="article-title"><a href="{{ entry.link }}">{{ entry.title }}</a></p>
+
+                    <div class="article-metadata">
+                        <p class="text-authors">
+                            {{ entry.author }}
+                        </p>
+
+                        <p class="text-pub-date">
+                            Published: {{ entry.updated_parsed|todatetime|date:'d/m/Y' }}
+                        </p>
+
+                        {% if entry.tags %}
+                            <p class="text-tags">Tags: 
+                                {% for tag in entry.tags %}
+                                    {{ tag.term }}
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+                    </div>
+                    <p>{{ entry.description|truncatewords:25 }}</p>
+                </div>
+            
+            {% endfor %}
+        
+        </div>
+    </div>
+    
+</div>
+{% endblock content %}

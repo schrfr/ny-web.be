@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{% block title %}nY web{% endblock %}</title>
+    
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+    <meta name="description" content="{% block description %}website en tijdschrift voor literatuur, kritiek &amp; amusement, voorheen yang &amp; freespace Nieuwzuid{% endblock %}" />
+    <meta name="keywords" content="nY, tijdschrift, yang, freespace Nieuwzuid, literair tijdschrift, literatuur, literary journal, revue littéraire, Literaturzeitschrift, literature, literature, Literature" />
+    <meta name="author" content="nY" />
+    <meta name="category" content="literature, tijdschrift, instruments, réparation" />
+    <meta name="Publisher" content="nY" />
+    <meta name="copyright" content="nY" />
+    <meta name="Identifier-URL" content="http://www.ny-web.be/" />
+
+    <link rel="schema.dc" href="http://purl.org/dc/elements/1.1/" />
+    <meta name="dc.title" lang="fr" content="nY web" />
+    <meta name="dc.description" lang="nl" content="{% block dcdescription %}website en tijdschrift voor literatuur, kritiek &amp; amusement, voorheen yang &amp; freespace Nieuwzuid{% endblock %}" />
+    <meta name="dc.publisher" content="nY" />
+    <meta name="dc.type" content="text" />
+    <meta name="dc.format" content="text/html" />
+    	
+	<link href="{{ MEDIA_URL }}images/logos/nY-favicon.gif" type="image/x-icon" rel="icon" />
+	<link href="{{ MEDIA_URL }}images/logos/nY-favicon.gif" type="image/x-icon" rel="shortcut icon" />
+    
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/reset.css" type="text/css" media="screen" title="main" charset="utf-8" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" type="text/css" media="screen" title="main" charset="utf-8" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/print.css" type="text/css" media="print" title="main" charset="utf-8" />
+    
+    {% block extrastyle %}{% endblock extrastyle %}
+    
+    <script type="text/javascript" src="{{ MEDIA_URL}}js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL}}js/jquery.qtip-1.0.0-rc3.min.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function() { 
+            $('.main-menu a[href][title]').qtip(); 
+            $("#timeline-table a[href][title]").qtip({
+               content: {
+                   text: false
+               },
+               position: {
+                  corner: {
+                     target: 'topLeft',
+                     tooltip: 'bottomLeft'
+                  }
+               },
+               // style: {
+               //     width: { max: 400 }
+               // }
+            });
+        });
+    </script>
+    
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+    var pageTracker = _gat._getTracker("UA-11988655-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+    
+</head>
+<body>
+    <div id="page">
+        
+        {% if big_banner %}
+            <div id="big-banner">
+                <div class="content">
+                    {% if url_big_banner %}
+                        <a href='{{ url_big_banner }}' target="_blank"><img src="{{ MEDIA_URL }}{{ big_banner }}" /></a>
+                    {% else %}
+                        <img src="{{ MEDIA_URL }}{{ big_banner }}" />
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+        
+        <div id="header" style="min-height: 208px;">
+            <div class="column500">
+                <div class="content">
+                    <div>
+                        <br /><br /><br />
+                        <a id="logo" href="{% url ny-timeline %}">nY</a>
+                        <div class="path">
+                            <span style="font-weight: bold;">website en tijdschrift voor literatuur, kritiek &amp; amusement, <br />
+                            voorheen</span> <span style="font-style: italic;">yang &amp; freespace Nieuwzuid</span>                                
+                        </div>
+                        
+                        {% block path %}{% endblock path %}
+                        {% block subpath %}{% endblock subpath %}
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="column250">
+                <ul class="main-menu content">
+                    <li> 
+                        <a href="{% url ny-about 'nl' %}">About nl</a> | 
+                        <a href="{% url ny-about 'fr' %}">fr</a> | 
+                        <a href="{% url ny-about 'en' %}">en</a>
+                    </li>
+                    <li><a href="">Order Now!</a></li>
+                    <li><a href="{% url ny-hard-copy %}">Print Issues</a></li>
+                    <li><a href="{% url ny-archive-all %}" id="link-archive">Web Archive</a></li>
+                    <li><a href="{% url ny-links %}">Links</a></li>
+                    <li><a href="{% url ny-feeds 'latest' %}">RSS</a></li>
+                </ul>
+            </div>
+            <div class="column250">
+                <ul class="main-menu content">
+                    <li><a href="{% url ny-list 'showtime' %}" title="Nieuws en debat">Showtime</a></li>
+                    <li><a href="{% url ny-list 'untimely-meditations' %}" title="Korte reflecties">Untimely Meditations</a></li>
+                    <li><a href="{% url ny-list 'transitzone' %}" title="Zone for non-Dutch readers and writers">Transitzone</a></li>
+                    <li><a href="{% url ny-list 'long-hard-looks' %}" title="Kritieken">Long Hard Looks</a></li>
+                    {# <li><a href="">Workshop</a></li> #}
+                    <li style="margin-top: 18px">
+                        <form action="{% url ny-search %}" method="get" accept-charset="utf-8">
+                            {# <div> #}
+                            {#     <div id="search-submit"> #}
+                            {#         <input type="submit" value="Search" /> #}
+                            {#     </div> #}
+                            {#     <div id="search-text"> #}
+                            {#         <input type="text" name="query" value="" id="search" /> #}
+                            {#     </div> #}
+                            {# </div> #}
+                            <table>
+                                <tr>
+                                    <td id="search-text"><input type="text" name="query" value="" id="search" /></td>
+                                    <td id="search-submit"><input type="submit" value="Search" /></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </li>
+                    <li>
+                        <a href="http://www.fondsvoordeletteren.be/">
+                            <img src="{{ MEDIA_URL }}images/logos/vlf.jpg" alt="Vlaams Fonds Voor De Letteren Logo" />
+                        </a> 
+                        <a href="http://www.oost-vlaanderen.be/public/">
+                            <img src="{{ MEDIA_URL }}images/logos/o-vl.jpg" alt="Provincie Oost-Vlaanderen" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+        
+        {% block content %}{% endblock content %}
+        
+        <div style="clear: both"></div>
+        
+    </div>
+</body>
+</html>

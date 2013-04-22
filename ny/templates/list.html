@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% load comments %}
+{% load humanize %}
+{% load recurse %}
+{% load markup %}
+{% load tags %}
+
+{% block path %}
+    <h1>{{ path }}</h1>
+{% endblock %}
+
+{% block extrastyle %}
+    <style type="text/css" media="screen">
+        #zone-blurp a { color: white; }
+    </style>
+{% endblock extrastyle %}
+
+
+{% block subpath %}
+    {% if subpath %}
+        <h2>{{ subpath }}</h2>
+    {% endif %}
+    <div id="zone-blurp" style="margin-bottom: 34px; margin-top: 17px;">
+        <span style="background-color: black; color: white">{{ blurp|safe }}</span>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div id="article">
+    <div class="column500">
+        <div class="content">
+            
+            {% if text_list %}
+            
+                {% regroup text_list by pub_date as text_list %}
+                {% for date in text_list %}
+                    <div class="entries-date">
+                        <p> {{ date.grouper|date:'d' }}</p>
+                        <p> {{ date.grouper|date:'m' }}</p>
+                        <p>'{{ date.grouper|date:'y' }}</p>
+                    </div>
+                    {% for text in date.list %}
+                            {% include "timeline-entry.html" %}
+                    {% endfor %}
+                {% endfor %}
+
+                {% if has_previous or has_next %}
+                <div id="folio">
+                    {% if has_previous %}
+                        <a href='?page={{ page|add:"-1" }}'>Newer</a>
+                    {% endif %}
+                    {% if has_previous and has_next %} | {% endif %}
+                    {% if has_next %}
+                        <a href="?page={{ page|add:1 }}">Older</a>
+                    {% endif %}
+                </div>
+                {% endif %}
+            {% else %}
+            
+                No result.
+            
+            {% endif %}
+            
+        </div>
+    </div>
+    {% if zone %}
+        <div class="column250">
+            {% ifequal zone.identifier 'transitzone' %}
+                {% language_list zone %}
+                {% type_list zone %}
+            {% endifequal %}
+            {% tag_list zone %}
+        </div>
+    {% endif %}
+    
+    {% include 'small-banners.html' %}
+    
+</div>
+{% endblock content %}

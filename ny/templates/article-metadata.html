@@ -1,0 +1,17 @@
+{% if text.authors.all %}
+    <p class="text-authors">
+    {{ text.authors.all|join:", " }}
+    </p>
+{% endif %}
+
+<p class="text-pub-date">
+    Published: {{ text.pub_date|date:'j/m/Y' }}
+</p>
+
+{% if text.keywords.all %}
+    <p class="text-tags">Tags: 
+        {% for keyword in text.keywords.all %}
+            <a href="{{ keyword.get_absolute_url }}" class="tag-link">{{ keyword }}</a>
+        {% endfor %}
+    </p>
+{% endif %}

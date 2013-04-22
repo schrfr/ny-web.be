@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% load chunks %}
+
+{% block path %}<h1>About/</h1>{% endblock %}
+
+{% block content %}
+
+<div id="about">
+    <div class="column500">
+        <div class="content">
+            <div id="mission-statement">
+                {% ifequal iso_code 'nl' %}
+                    {% chunk "mission-statement-nl" %}
+                {% else %}
+                    {% ifequal iso_code 'fr'  %}
+                            {% chunk "mission-statement-fr" %}
+                        {% else %}
+                            {% chunk "mission-statement-en" %}
+                    {% endifequal %}
+                {% endifequal %}
+            </div>
+            <div id="info">
+                <h3>Info</h3>
+                {% ifequal iso_code 'nl' %}
+                    {% chunk "info-nl" %}
+                {% else %}
+                    {% ifequal iso_code 'fr'  %}
+                            {% chunk "info-fr" %}
+                        {% else %}
+                            {% chunk "info-en" %}
+                    {% endifequal %}
+                {% endifequal %}
+            </div>
+            <div id="credits">
+                <h3>Credits</h3>
+                {% ifequal iso_code 'nl' %}
+                    {% chunk "credits-nl" %}
+                {% else %}
+                    {% ifequal iso_code 'fr'  %}
+                            {% chunk "credits-fr" %}
+                        {% else %}
+                            {% chunk "credits-en" %}
+                    {% endifequal %}
+                {% endifequal %}
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="column250">
+        <div class="content">
+            <div id="colofon">
+                {% ifequal iso_code 'nl' %}
+                    {% chunk "colofon-nl" %}
+                {% else %}
+                    {% ifequal iso_code 'fr'  %}
+                            {% chunk "colofon-fr" %}
+                        {% else %}
+                            {% chunk "colofon-en" %}
+                    {% endifequal %}
+                {% endifequal %}
+            </div>
+        </div>
+    </div>
+    
+    {% include 'small-banners.html' %}
+
+    
+    
+    <div style="clear:both;"></div>
+</div>
+
+{% endblock content %}

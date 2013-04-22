@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% load comments %}
+{% load humanize %}
+{% load recurse %}
+{% load markup %}
+{% load utils %}
+{% load url_utils %}
+
+{% block title %}{{ text.title }}{% endblock %}
+{% block description %}{{ text.description }}{% endblock %}
+{% block dcdescription %}{{ text.description }}{% endblock %}
+
+{% block path %}<h1>{{ path }}</h1>{% endblock %}
+{% block subpath %}<h2>{{ text.title }}</h2>{% endblock %}
+
+{% block extrastyle %}
+
+    <style type="text/css" media="screen">
+        #article-general-comments ul,
+        .comment-cell ul
+            {
+                border-left:1px dotted #22B7A8;
+                color:gray;
+                padding-left:1em;
+            }
+        #add-comment {
+            margin-top:17px;
+        }
+        .comment-on { 
+            color: black;
+            margin-bottom: 17px;
+        }
+        .comment-on blockquote, .comment-on blockquote * {
+            color: #22B7A8 !important;
+            padding-left: 0 !important;
+            font-weight: normal !important;
+        }
+        
+        .comment-form form p {
+            margin-bottom: 17px;
+        }
+        
+        #article-general-comments ul + ul,
+        .comment-cell ul + ul  
+            { padding-top: 17px; }
+        
+        #article-general-comments ul ul,
+        .comment-cell ul ul
+            { margin-top: 17px; }
+        
+        #article-general-comments li:first-child,
+        .comment-cell li:first-child
+            { padding-top: 0; }
+        
+        #article-general-comments li,
+        .comment-cell li
+            { list-style-type: none; padding-top: 17px; }
+    </style>
+    
+{% endblock extrastyle %}
+
+{% block content %}
+<script type="text/javascript" charset="utf-8" src='{{ MEDIA_URL }}js/toolbox.js'></script> 
+<div id="text" style="clear: both;">
+    <div id="text-header">
+        <div class="column500">
+            <div id="text-metadata" class="content">
+                {% include "article-metadata.html" %}
+                <div id="text-toolbox">
+                    <a id="print-link" href=".">Print</a>
+                    <a href="{% url ny-share text.identifier %}">Share</a>
+                </div>
+            </div>
+        </div>
+        {% if text.paragraph_comments %}
+            <div class="column500">
+                <ul id="comment-toolbox" class="content">
+                    {% ifequal view "none"%}
+                        <li><a href="?view=all">Show paragraph comments</a></li>
+                    {% else %}
+                        <li><a href="?view=none">Hide paragraph comments</a></li>
+                    {% endifequal %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+    
+    
+    {% if text.paragraph_comments %}
+        <table border="0" cellspacing="0" cellpadding="0" id="text-table">
+
+            {% for paragraph in text.paragraph_set.all %}
+
+            <tr id="paragraph_{{ paragraph.id }}">
+
+                <td class="body-cell">
+                    {{ paragraph.content|safe }}
+                </td>
+
+                <td class="comment-cell">
+                    
+                    {% get_comment_count for paragraph as comment_count %}
+                    <div class="comment-count">
+                        <a href='{% query_string "" "view, cc, cp, ct" %}view={{view}}&amp;cp={{ paragraph.id }}#add-comment'>✎</a> 
+                        {{ comment_count }}                            
+                    </div>
+                    
+                    {% get_comment_list for paragraph as comment_list %}
+                    {% assign comment_target paragraph %}
+                    {% include 'new-comments.html' %}
+                    
+                    {% ifequal cp paragraph.id  %}
+                        {% get_comment_form for paragraph as comment_form %}
+                        {% assign comment_on paragraph.content %}
+                        {% include 'new-comment-form.html' %}
+                    {% endifequal %}
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    {% else %}
+        <div id="text-body" {% ifnotequal text.document_type.name 'Poetry' %}class="column500"{% endifnotequal %}>
+            <div class="content">
+                {{ text.body|safe }}
+            </div>            
+        </div>
+        {% ifnotequal text.document_type.name 'Poetry' %}
+            {% include 'small-banners.html' %}
+        {% endifnotequal %}
+    {% endif %}
+    {#  END text BODY #}
+    <div style="clear:both"></div>
+    {{ related_texts }}
+    {% if related_text_list %}
+    <div id="related-texts" class="column500">
+        <div class="content">
+            <h3 class='h3-regular'>Related Texts/</h3>
+            {% regroup related_text_list by pub_date as text_list %}
+            {% for pub_date in text_list %}
+                <div class="entries-date">
+                    <p> {{ pub_date.grouper|date:'d' }}</p>
+                    <p> {{ pub_date.grouper|date:'m' }}</p>
+                    <p>'{{ pub_date.grouper|date:'y' }}</p>
+                </div>
+                {% for text in pub_date.list %}
+                     {% include "timeline-entry.html" %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div style="clear:both;"></div>
+    
+    <div id="article-general-comments" class="column500">
+        <div class="content">
+            {% if text.general_comments %}
+                
+                {% get_comment_count for text as comment_count %}
+                <div id="general-comment-count">
+                    <a href='{% query_string "" "view, cc, cp, ct" %}view={{view}}&amp;ct={{ text.id }}#add-comment'>
+                        ✎ {{ comment_count }} general comment{{ comment_count|pluralize }}
+                    </a>
+                </div>
+                
+                {% get_comment_list for text as comment_list %}
+                {% assign comment_target text %}
+                {% include 'new-comments.html' %}
+                
+                {% ifequal ct text.id  %}
+                    {% get_comment_form for text as comment_form %}
+                    {% assign comment_on text.body %}
+                    {% include 'new-comment-form.html' %}
+                {% else %}
+                    <div style="margin-top: 34px">
+                        <a href='{% query_string "" "cc, cp, ct" %}ct={{ text.id }}#add-comment'>
+                            Write a general comment
+                        </a>
+                    </div>
+                {% endifequal %}
+                
+            {% endif %}
+        </div>
+    </div>
+    
+</div>
+{% endblock content %}

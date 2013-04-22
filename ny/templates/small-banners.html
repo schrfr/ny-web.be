@@ -1,0 +1,25 @@
+<div class="column250" style="float: right;">
+    {% if first_small_banner %}
+            <div class="content small-banner">
+                {% if url_first_small_banner %}
+                    <a href='{{ url_first_small_banner }}' target="_blank">
+                        <img src="{{ MEDIA_URL }}{{ first_small_banner }}" alt="Advertising" />
+                    </a>
+                {% else %} 
+                    <img src="{{ MEDIA_URL }}{{ first_small_banner }}"  alt="Advertising" />
+                {% endif %}
+            </div>                
+
+    {% endif %}
+    {% if second_small_banner %}
+            <div class="content small-banner">
+                {% if url_second_small_banner %}
+                    <a href='{{ url_second_small_banner }}' target="_blank">
+                        <img src="{{ MEDIA_URL }}{{ second_small_banner }}" alt="Advertising" />
+                    </a>
+                {% else %} 
+                    <img src="{{ MEDIA_URL }}{{ second_small_banner }}"  alt="Advertising" />
+                {% endif %}
+            </div>                
+    {% endif %}
+</div>

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% load comments %}
+{% load humanize %}
+{% load recurse %}
+{% load markup %}
+{% load tags %}
+
+{% block path %}<h1>{{ path }}</h1>{% endblock %}
+
+{% block subpath %}
+    {% if subpath %}
+        {# <h2>{{ subpath }}</h2> #}
+    {% endif %}
+    <div id="zone-blurp" style="margin-bottom: 34px; margin-top: 17px;">
+        <span style="background-color: black; color: white">{{ blurp }}</span>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div id="article">
+    <div class="column500">
+        <div class="content">
+            
+            {% if text_list %}
+            
+                {% regroup text_list by pub_date as text_list %}
+                {% for date in text_list %}
+                    <div class="entries-date">
+                        <p> {{ date.grouper|date:'d' }}</p>
+                        <p> {{ date.grouper|date:'m' }}</p>
+                        <p>'{{ date.grouper|date:'y' }}</p>
+                    </div>
+                    {% for text in date.list %}
+                            {% include "timeline-entry.html" %}
+                    {% endfor %}
+                {% endfor %}
+
+                {% if has_previous or has_next %}
+                <div id="folio">
+                    {% if has_previous %}
+                        <a href='?page={{ page|add:"-1" }}'>Newer</a>
+                    {% endif %}
+                    {% if has_previous and has_next %} | {% endif %}
+                    {% if has_next %}
+                        <a href="?page={{ page|add:1 }}">Older</a>
+                    {% endif %}
+                </div>
+                {% endif %}
+            {% else %}
+            
+                No result.
+            
+            {% endif %}
+            
+        </div>
+    </div>
+    <div class="column250">
+        <div class="content">
+            <h3 class='h3-regular'>Authors/</h3>
+            <ul class="side-menu">
+                {% get_all_authors as authors %}
+                {% for author in authors %}
+                     <li><a href="{% url ny-archive-filtered 'author' author.slug %}">{{ author.full_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="column250">
+        <div class="content">
+            <h3 class='h3-regular'>Languages/</h3>
+            <ul class="side-menu">
+                {% get_all_languages as languages %}
+                {% for language in languages %}
+                     <li><a href="{% url ny-archive-filtered 'language' language.identifier %}">{{ language.name }}</a></li>
+                {% endfor %}
+            </ul>
+            <h3 class='h3-regular'>Types/</h3>
+            <ul class="side-menu">
+                {% get_all_types as types %}
+                {% for type in types %}
+                     <li><a href="{% url ny-archive-filtered 'type' type.identifier %}">{{ type.name }}</a></li>
+                {% endfor %}
+            </ul>
+            <h3 class='h3-regular'>Tags/</h3>
+            <ul class="side-menu">
+                {% get_all_tags as tags %}
+                {% for tag in tags %}
+                     <li><a href="{% url ny-archive-filtered 'tag' tag.identifier %}">{{ tag.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}

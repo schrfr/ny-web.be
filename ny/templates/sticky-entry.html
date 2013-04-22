@@ -1,0 +1,36 @@
+{% load recurse %}
+{% load markup %}
+{% load utils %}
+
+{% get_all_comments for text as all_comments_list %}
+
+<div class="timeline-entry">
+    
+    {# {% if text.id|in_list:stickies %} #}
+    {% if text.highlight %}
+        <p class="article-title"><a href="{{ text.get_absolute_url }}" class="highlighted-text">{{ text }}</a></p>
+    {% else %}
+        <p class="article-title"><a href="{{ text.get_absolute_url }}">{{ text }}</a></p>
+    {% endif %}
+    
+    <div class="article-metadata">
+        {% include "article-metadata.html" %}
+    </div>
+    
+    {# {% if not show_on_list %} #}
+        {% if text.description %}
+            <p class="article-description">{{ text.description }}</p>
+        {% endif %}
+    {# {% else %} #}
+    {#     <p class="article-description">{{ text.body|markdown|truncatewords_html:100 }}</p> #}
+    {# {% endif %} #}
+    
+    {# <div class="article-comments"> #}
+    {#     {% for c in all_comments_list|head:3 %} #}
+    {#         <p class="timeline-comment">✎ {{ c.comment|truncatewords:5 }} by {{ c.user_name }}</p> #}
+    {#     {% endfor %} #}
+    {#     {% if all_comments_list|length|isgreater:3 %} #}
+    {#         <p class="timeline-comment">And {{ all_comments_list|length|add:"-3" }} more…</p> #}
+    {#     {% endif %} #}
+    {# </div> #}
+</div>

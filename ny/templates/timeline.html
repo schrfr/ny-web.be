@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% load recurse %}
+{% load utils %}
+
+{% block extrastyle %}
+    <style type="text/css" media="screen">
+        #stickies { color: black;}
+        #stickies .article-title a { background-color: black; color: white; }
+        #stickies .article-description { margin-bottom: 13px; }
+        #stickies-title { padding: 0 0 11px 0; text-decoration: underline; font-size: 11px;}
+    </style>    
+{% endblock extrastyle %}
+
+{% block content %}
+<!-- Begining Timeline -->
+<table border="0" cellspacing="0" cellpadding="0" id="timeline-table">
+    <colgroup>
+        <col id="col-date" />
+        <col class="col-zone" />
+        <col class="col-zone" />
+        <col class="col-zone" />
+        <col class="col-zone" />
+    </colgroup>
+<thead>
+    <tr>
+        <th class="cell-date"></th>
+        <th><a href="{% url ny-list 'showtime' %}" title="Nieuws en debat">Showtime/</a></th>
+        <th><a href="{% url ny-list 'untimely-meditations' %}" title="Korte reflecties">Untimely Meditations/</a></th>
+        <th><a href="{% url ny-list 'transitzone' %}" title="Zone for non-Dutch readers and writers">Transitzone/</a></th>
+        <th><a href="{% url ny-list 'long-hard-looks' %}" title="Kritieken">Long Hard Looks/</a></th>
+    </tr>
+</thead>
+<tbody id="stickies">
+    <tr>
+        <td style="background-color: white;">
+        </td>
+        <td colspan="4">
+            <p id="stickies-title">Selected Articles</p>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color: white;">
+        </td>
+        <td>
+            {% assign text stickies_showtime.first_text %}
+            {% include "sticky-entry.html" %}
+            {# {{ stickies_showtime.second_text }} #}
+        </td>
+        <td>
+            {% assign text stickies_untimely_meditations.first_text%}
+            {% include "sticky-entry.html" %}
+            {# {{ stickies_untimely_meditations.second_text }} #}
+        </td>
+        <td>
+            {% assign text stickies_transitzone.first_text%}
+            {% include "sticky-entry.html" %}
+            {# {{ stickies_transitzone.second_text }} #}
+        </td>
+        <td>
+            {% assign text stickies_long_hard_looks.first_text%}
+            {% include "sticky-entry.html" %}
+            {# {{ stickies_long_hard_looks.second_text }} #}
+        </td>
+    </tr>
+</tbody>
+<tbody>
+{% regroup text_list by pub_date as text_list %}
+{% for date in text_list %}
+    <tr>
+        <td class="cell-date">
+            {# <div class="entries-date"> #}
+                <p> {{ date.grouper|date:'d' }}</p>
+                <p> {{ date.grouper|date:'m' }}</p>
+                <p>'{{ date.grouper|date:'y' }}</p>
+            {# </div> #}
+        </td>
+        <td>
+            {% for text in date.list %}
+                {% ifequal text.zone.identifier 'showtime' %}
+                    {% include "timeline-entry.html" %}
+                {% endifequal %}
+            {% endfor %}
+        </td>
+        <td>
+            {% for text in date.list %}
+                {% ifequal text.zone.identifier 'untimely-meditations' %}
+                    {% include "timeline-entry.html" %}
+                {% endifequal %}
+            {% endfor %}
+        </td>
+        <td>
+            {% for text in date.list %}
+                {% ifequal text.zone.identifier 'transitzone' %}
+                    {% include "timeline-entry.html" %}
+                {% endifequal %}
+            {% endfor %}
+        </td>
+        <td>
+            {% for text in date.list %}
+                {% ifequal text.zone.identifier 'long-hard-looks' %}
+                    {% include "timeline-entry.html" %}
+                {% endifequal %}
+            {% endfor %}
+        </td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block section %}share{% endblock %}
+
+{% block path %}
+    <h1>Share/</h1>
+{% endblock path %}
+
+
+{% block content %}
+
+<div class="section">
+    <div class="column500">
+        <div class="content">
+            You are sharing <a href="{{ text.get_absolute_url }}">{{ text.title }}</a>        
+        </div>
+    </div>    
+</div>
+<div style="clear:both;"></div>
+<div class="section">
+    <div class="column500" id="share-form">
+        <div class="content">
+            <form action="." method="POST">
+                <table border="0" cellpadding="0">
+                {{ form.as_p }}
+                </table>
+            <input type="submit" value="Submit" />
+            </form>
+            {% endblock content %}        
+        </div>
+    </div>    
+</div>
+
+

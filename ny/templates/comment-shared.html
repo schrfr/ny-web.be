@@ -1,0 +1,36 @@
+{% load recurse %}
+{% load comments %}
+
+
+{{ comment.comment|linebreaks|urlizetrunc:25 }}
+<p class="signature-comment">
+    {% ifnotequal comment.user_url "" %}
+        by <a href="{{ comment.user_url }}">{{ comment.user_name }}</a>, 
+        {{ comment.submit_date|timesince }} ago |
+    {% else %}
+        by {{ comment.user_name }}, {{ comment.submit_date|timesince }} ago | 
+    {% endifnotequal %}
+
+    <a href="?view={{ view }}&amp;cc={{ comment.id }}#comment-comment">reply</a>
+
+    {# {% if user.is_authenticated %} #}
+    {% if perms.comments.can_delete_comment %}
+        | <a href="{% url comments-delete comment.id %}">delete</a>
+    {% endif %}
+    {% if perms.comments.can_delete_comment %}
+        | <a href="/admin/comments/comment/{{ comment.id }}/">edit</a>
+    {% endif %}
+</p>
+{% recurse comment %}
+<!-- IF Comment the Comment-->
+{% ifequal comment.id cc %}
+<div id="comment-comment">
+    <p id="comment-reference-title">You are replying to:</p>
+    <p id="comment-reference">
+        <a href="#comment-{{comment.id}}">
+            {{ comment.user_name }}: {{ comment.comment|truncatewords:10 }}
+        </a>
+    </p>
+    {% render_comment_form for comment %}
+</div>
+{% endifequal %}

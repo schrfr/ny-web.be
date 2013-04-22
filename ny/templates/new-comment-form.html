@@ -1,0 +1,76 @@
+{% load comments %}
+{% load threadedcomments_tags %}
+{% load markup %}
+{% load url_utils %}
+
+<div id='add-comment'>
+    <div class='comment-on'>
+        You are commenting on: 
+        <blockquote>
+            {{ comment_on|safe|truncatewords_html:20}}
+        </blockquote>
+    </div>
+    <div class='comment-form'>
+
+         <form action="{% comment_form_target %}" method="post">
+             <input type="hidden" name="next" value="{{ comment_target.get_absolute_url }}" />
+            {{ comment_form.content_type }}
+            {{ comment_form.object_pk }}
+            {{ comment_form.timestamp }}
+            {{ comment_form.security_hash }}
+            {{ comment_form.parent }}
+            <p style="display:none"><label for="id_honeypot">Leave blank</label>{{ comment_form.honeypot }}</p>
+            <p>
+                <label for="id_name">Name</label>
+                {{ comment_form.name }}
+            </p>
+            <p>
+                <label for="id_email">Email</label>
+                {{ comment_form.email }}
+            </p>
+            <p>
+                <label for="id_url">URL</label>
+                {{ comment_form.url }}
+            </p>
+            <p>
+                <label for="id_comment">Comment</label>
+                {{ comment_form.comment }}
+            </p>
+            <p> 
+                <input type="submit" name="preview" class="submit-preview" value="Preview" />
+                <input type="submit" name="submit" class="submit-post" value="Post" />
+            </p>
+            
+        </form>
+
+        {# <form method="post" action="{% comment_form_target %}"> #}
+        {#     <table id="comment-form"> #}
+        {#         {% for field in comment_form %} #}
+        {#             {% if field.is_hidden %} #}
+        {#                 <p>{{ field }}</p> #}
+        {#             {% else %} #}
+        {#                      #}
+        {#             {% if field.errors %} class="error"{% endif %} #}
+        {#              #}
+        {#             <tr {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}> #}
+        {#                 <th> #}
+        {#                     {{ field.label_tag }} #}
+        {#                 </th> #}
+        {#                 <td> #}
+        {#                     {{ field }} #}
+        {#                 </td> #}
+        {#             </tr> #}
+        {#             {% endif %} #}
+        {#         {% endfor %} #}
+        {#             <tr> #}
+        {#                 <th></th> #}
+        {#                 <td> #}
+        {#                     <input type="submit" name="submit" class="submit-post" value="Post" /> #}
+        {#                     <input type="submit" name="preview" class="submit-preview" value="Preview" /> #}
+        {#                 </td> #}
+        {#             </tr> #}
+        {#     </table> #}
+        {# </form> #}
+        
+    </div>
+</div>

@@ -1,0 +1,12 @@
+** All pages should start at the same place.
+** Hard Copy page
+** Timeline: on search -> h2 = result for {{ your_search }}
+** Tag Menu: 14px  header black; links: green underline;
+
+* Print CSS
+* adding zone in the metadata (?)
+
+hard copy page
+adjust height on list pages
+style the tags
+when searching the timeline — show 'You searched on…'
