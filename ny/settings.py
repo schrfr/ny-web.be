@@ -117,7 +117,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware'
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware'
 )
 
 ROOT_URLCONF = 'ny.urls'
@@ -155,42 +156,18 @@ INSTALLED_APPS = (
 
 # DATE_FORMAT = 'F Y, the jS'
 
-FILEBROWSER_URL_WWW = '/static/uploads/'
-# FILEBROWSER_URL_ADMIN = getattr(settings, "FILEBROWSER_URL_ADMIN", '/admin/filebrowser/')
-# FILEBROWSER_URL_HOME = getattr(settings, "FILEBROWSER_URL_HOME", '/admin/')
-FILEBROWSER_URL_FILEBROWSER_MEDIA = "/static/filebrowser/"
-# FILEBROWSER_URL_TINYMCE = getattr(settings, "FILEBROWSER_URL_TINYMCE", settings.ADMIN_MEDIA_PREFIX + "tinymce/jscripts/tiny_mce/")
-# FILEBROWSER_PATH_SERVER = getattr(settings, "FILEBROWSER_PATH_SERVER", os.path.join(settings.MEDIA_ROOT, 'uploads'))
-FILEBROWSER_PATH_FILEBROWSER_MEDIA = "/static/filebrowser/"
-# FILEBROWSER_PATH_TINYMCE = getattr(settings, "FILEBROWSER_PATH_TINYMCE", settings.ADMIN_MEDIA_PREFIX + "tinymce/jscripts/tiny_mce/")
-# FILEBROWSER_EXTENSIONS = getattr(settings, "FILEBROWSER_EXTENSIONS", {
-#     'Folder':[''],
-#     'Image':['.jpg', '.jpeg', '.gif','.png','.tif','.tiff'],
-#     'Video':['.mov','.wmv','.mpeg','.mpg','.avi','.rm'],
-#     'Document':['.pdf','.doc','.rtf','.txt','.xls','.csv'],
-#     'Sound':['.mp3','.mp4','.wav','.aiff','.midi'],
-#     'Code':['.html','.py','.js','.css']
-# })
-# FILEBROWSER_SELECT_FORMATS = getattr(settings, "FILEBROWSER_SELECT_FORMATS", {
-#     'File':['Folder','Document'],
-#     'Image':['Image'],
-#     'Media':['Video','Sound']
-# })
-# FILEBROWSER_MAX_UPLOAD_SIZE = getattr(settings, "FILEBROWSER_MAX_UPLOAD_SIZE", 5000000)
-# FILEBROWSER_THUMB_PREFIX = getattr(settings, 'FILEBROWSER_THUMB_PREFIX', 'thumb_')
-# FILEBROWSER_THUMBNAIL_SIZE = getattr(settings, 'FILEBROWSER_THUMBNAIL_SIZE', '50x50')
-FILEBROWSER_USE_IMAGE_GENERATOR = True
-# FILEBROWSER_IMAGE_GENERATOR_DIRECTORY = getattr(settings, 'FILEBROWSER_IMAGE_GENERATOR_DIRECTORY', '_versions')
-# FILEBROWSER_IMAGE_GENERATOR_LANDSCAPE = [('thumbnail_',140),('small_',300),('medium_',460),('big_',620)]
-# FILEBROWSER_IMAGE_GENERATOR_PORTRAIT = [('thumbnail_',140),('small_',300),('medium_',460),('big_',620)]
-FILEBROWSER_IMAGE_GENERATOR_LANDSCAPE = [('thumbnail_',97),('small_',97),('medium_',359),('big_',620)]
-FILEBROWSER_IMAGE_GENERATOR_PORTRAIT = [('thumbnail_',97),('small_',97),('medium_',359),('big_',620)]
-# FILEBROWSER_IMAGE_CROP_GENERATOR = getattr(settings, "FILEBROWSER_IMAGE_CROP_GENERATOR", [('cropped_',60,60),('croppedthumbnail_',140,140)])
-# FILEBROWSER_CHECK_EXISTS = getattr(settings, 'FILEBROWSER_CHECK_EXISTS', True)
-# FILEBROWSER_FORCE_GENERATOR = getattr(settings, 'FILEBROWSER_FORCE_GENERATOR', False)
-# FILEBROWSER_FORCE_GENERATOR_RUN = getattr(settings, 'FILEBROWSER_FORCE_GENERATOR_RUN', False)
-# FILEBROWSER_STRICT_PIL = getattr(settings, 'FILEBROWSER_STRICT_PIL', False)
-# FILEBROWSER_DISALLOWED_FOLDER_NAMES = getattr(settings, "FILEBROWSER_DISALLOWED_FOLDER_NAMES", ['mkdir', 'makethumbs', 'upload', 'rename', 'delete'])
+#FILEBROWSER_IMAGE_GENERATOR_LANDSCAPE = [('thumbnail_',97),('small_',97),('medium_',359),('big_',620)]
+#FILEBROWSER_IMAGE_GENERATOR_PORTRAIT = [('thumbnail_',97),('small_',97),('medium_',359),('big_',620)]
+# Versions Format. Available Attributes: verbose_name, width, height, opts
+FILEBROWSER_VERSIONS = {
+    'fb_thumb': {'verbose_name': 'Admin Thumbnail', 'width': 60, 'height': 60, 'opts': 'crop upscale'},
+    'thumbnail': {'verbose_name': 'Thumbnail (97px)', 'width': 97, 'height': '', 'opts': ''},
+    'small': {'verbose_name': 'Small (97px)', 'width': 97, 'height': '', 'opts': ''},
+    'medium': {'verbose_name': 'Medium (359px)', 'width': 359, 'height': '', 'opts': ''},
+    'big': {'verbose_name': 'Big (620px)', 'width': 620, 'height': '', 'opts': ''},
+    'cropped': {'verbose_name': 'Cropped (60x60px)', 'width': 60, 'height': 60, 'opts': 'crop'},
+    'croppedthumbnail': {'verbose_name': 'Cropped Thumbnail (140x140px)', 'width': 140, 'height': 140, 'opts': 'crop'},
+}
 
 # Override the server-derived value of SCRIPT_NAME 
 # See http://code.djangoproject.com/wiki/BackwardsIncompatibleChanges#lighttpdfastcgiandothers

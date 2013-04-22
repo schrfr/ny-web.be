@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load fb_versions %}
+
 {% block path %}<h1>Print Issues/</h1>{% endblock %}
 {# {% block subpath %} #}
 {#     <h2>nY #{{ current_issue.number }}, Vlaam Hotelwezen</h2> #}
@@ -21,7 +23,7 @@
     <div class="content">
         <h2>#{{ current_issue.number }}</h2>                
         <p class="title">{{ current_issue.title }}</p>
-            <img id="current-cover" src="{{ current_issue.cover.medium }}" alt="nY #{{ current_issue.number }} {{ current_issue.title }}" />            
+        <img id="current-cover" src="{% version current_issue.cover 'medium' %}" alt="nY #{{ current_issue.number }} {{ current_issue.title }}" />            
     <br style="clear: both;" />
             <div id="description">
                 {{ current_issue.summary|safe }}
@@ -53,7 +55,7 @@
             <dl class="cover_thumbnail">
                 <dt>
                     <a href="{{other_issue.get_absolute_url}}">
-                        <img src="{{ other_issue.cover.small }}" alt="#{{ other_issue.number }} {{ other_issue.title }}"/>
+                        <img src="{% version other_issue.cover 'small' %}" alt="#{{ other_issue.number }} {{ other_issue.title }}"/>
                     </a>
                 </dt>
                 <dd><p class="number"><a href="{{other_issue.get_absolute_url}}">#{{ other_issue.number }}</a></p>

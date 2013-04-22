@@ -56,8 +56,15 @@ urlpatterns += patterns('library.views',
 )
 
 
-if settings.LOCAL_DEV:
-    baseurlregex = r'^static/(?P<path>.*)$'
+#if settings.LOCAL_DEV:
+    #baseurlregex = r'^static/(?P<path>.*)$'
+    #urlpatterns += patterns('',
+        #(baseurlregex, 'django.views.static.serve', {'document_root':  settings.MEDIA_ROOT}),
+    #)
+
+
+if settings.DEBUG:
     urlpatterns += patterns('',
-        (baseurlregex, 'django.views.static.serve', {'document_root':  settings.MEDIA_ROOT}),
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
     )

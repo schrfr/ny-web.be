@@ -13,7 +13,7 @@ class PrintIssue(models.Model):
     title      = models.CharField(max_length=50, verbose_name=_('Title'), blank=True)
     number     = models.PositiveIntegerField(max_length=3, verbose_name=_('Issue Number'), null=True, blank=True)
     pub_date   = models.DateField(verbose_name=_('Publication Date'), help_text=_('Publication date'))
-    cover      = FileBrowseField(max_length=200, initial_directory="/covers/", extensions_allowed=['.jpg', '.jpeg', '.gif','.png'], 
+    cover      = FileBrowseField(max_length=200, directory="covers/", extensions=['.jpg', '.jpeg', '.gif','.png'], 
                                  format='Image')
     identifier = models.SlugField(verbose_name=_('Identifier'), unique=True, help_text=_('Unique identifier. Allows a constant targeting of the issue'))
     summary    = tinymce_models.HTMLField(verbose_name=_('infos'), help_text=_('Enter here your custom text'), blank=True)
