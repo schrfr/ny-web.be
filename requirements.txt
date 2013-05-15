@@ -1,0 +1,17 @@
+BeautifulSoup==3.2.0
+Django==1.4.5
+Pillow==2.0.0
+chunks==0.1
+django-extensions==0.6
+django-filebrowser-no-grappelli==3.1.1
+django-simple-captcha==0.3.7
+-e git://github.com/HonzaKral/django-threadedcomments.git@661ba2b2e0c1461983844b564e17bad12e22b5db#egg=django_threadedcomments-dev
+django-tinymce==1.5.1a2
+django-wmd-editor==0.9.0
+feedparser==5.0.1
+ipdb==0.7
+ipython==0.13.2
+python-dateutil==2.0
+six==1.3.0
+sorl-thumbnail==3.2.5
+wsgiref==0.1.2

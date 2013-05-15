@@ -11,32 +11,10 @@
         </blockquote>
     </div>
     <div class='comment-form'>
-
         <form action="{% comment_form_target %}" method="post">{% csrf_token %}
-             <input type="hidden" name="next" value="{{ comment_target.get_absolute_url }}" />
-            {{ comment_form.content_type }}
-            {{ comment_form.object_pk }}
-            {{ comment_form.timestamp }}
-            {{ comment_form.security_hash }}
-            {{ comment_form.parent }}
-            <p style="display:none"><label for="id_honeypot">Leave blank</label>{{ comment_form.honeypot }}</p>
+            <input type="hidden" name="next" value="{{ comment_target.get_absolute_url }}" />
+            {{ comment_form.as_p }}
             <p>
-                <label for="id_name">Name</label>
-                {{ comment_form.name }}
-            </p>
-            <p>
-                <label for="id_email">Email</label>
-                {{ comment_form.email }}
-            </p>
-            <p>
-                <label for="id_url">URL</label>
-                {{ comment_form.url }}
-            </p>
-            <p>
-                <label for="id_comment">Comment</label>
-                {{ comment_form.comment }}
-            </p>
-            <p> 
                 <input type="submit" name="preview" class="submit-preview" value="Preview" />
                 <input type="submit" name="submit" class="submit-post" value="Post" />
             </p>

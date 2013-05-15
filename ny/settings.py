@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     # 'django.contrib.flatpages',
     'django.contrib.markup',
     'threadedcomments',
+    'ny_threadedcomments',
     'django.contrib.comments',
     'django.contrib.humanize',
     'django_extensions',
@@ -144,6 +145,7 @@ INSTALLED_APPS = (
     'links',
     'sitesettings',
     'chunks',
+    'captcha',
 )
 
 # DATE_FORMAT = 'F Y, the jS'
@@ -203,6 +205,23 @@ TINYMCE_DEFAULT_CONFIG = {
 TINYMCE_SPELLCHECKER = True
 # TINYMCE_COMPRESSOR = True
 
-COMMENTS_APP = 'threadedcomments'
+COMMENTS_APP = 'ny_threadedcomments'
 
 COMMENTS_ALLOW_PROFANITIES = True
+
+#CAPTCHA_FONT_PATH = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', 'fonts/Vera.ttf'))
+#CAPTCHA_FONT_SIZE = 22
+#CAPTCHA_LETTER_ROTATION = (-1, 1)
+#CAPTCHA_BACKGROUND_COLOR = '#ffffff'
+#CAPTCHA_FOREGROUND_COLOR = '#001100'
+#CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
+#CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_arcs', 'captcha.helpers.noise_dots',)
+#CAPTCHA_FILTER_FUNCTIONS = ('captcha.helpers.post_smooth',)
+#CAPTCHA_WORDS_DICTIONARY = '/usr/share/dict/words'
+#CAPTCHA_PUNCTUATION = '''_"',.;:-'''
+#CAPTCHA_FLITE_PATH = None
+#CAPTCHA_TIMEOUT = 5  # Minutes
+#CAPTCHA_LENGTH = 4  # Chars
+#CAPTCHA_IMAGE_BEFORE_FIELD = True
+#CAPTCHA_DICTIONARY_MIN_LENGTH = 0
+#CAPTCHA_DICTIONARY_MAX_LENGTH = 99

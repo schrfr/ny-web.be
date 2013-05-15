@@ -14,6 +14,10 @@ urlpatterns = patterns('',
     url(r'^share/(?P<slug>[-\w]+)/$', 'share.views.share', name="ny-share"),
 )
 
+urlpatterns += patterns('',
+    url(r'^captcha/', include('captcha.urls')),
+)
+
 urlpatterns += patterns('django.contrib.syndication.views',
     url(r'^feeds/latest/$', LatestEntries(), name="ny-feed-latest"),
 )
@@ -54,6 +58,7 @@ urlpatterns += patterns('library.views',
     url(r'^(?P<category>[-\w]+)/$', 'list_new', { 'archive': False }, name="ny-list"),
     url(r'^(?P<category>[-\w]+)/(?P<field>\w+)/(?P<query>[-\w]+)/$', 'list_new', { 'archive': False }, name="ny-list-filtered"),
 )
+
 
 
 #if settings.LOCAL_DEV:
