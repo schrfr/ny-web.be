@@ -4,10 +4,6 @@
 import os.path
 import os
 
-LOCAL_DEV = True
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
 
 ADMINS = (
     ('Alexandre Leray', 'alexandre@stdin.fr'),
@@ -16,13 +12,6 @@ ADMINS = (
 MANAGERS = ADMINS
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
-
-DATABASES = {
-    'default': {
-        'NAME': os.path.join(PROJECT_DIR, 'ny.db'),
-        'ENGINE': 'django.db.backends.sqlite3',
-    }
-}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -83,9 +72,6 @@ STATICFILES_DIRS = (
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/static/admin/'
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'xb(*r#)@^wd&1e6m^d7#%g9mgyta(2$s-qrk@p5@qxk^f%y8p('
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -163,10 +149,6 @@ FILEBROWSER_VERSIONS = {
     'croppedthumbnail': {'verbose_name': 'Cropped Thumbnail (140x140px)', 'width': 140, 'height': 140, 'opts': 'crop'},
 }
 
-# Override the server-derived value of SCRIPT_NAME 
-# See http://code.djangoproject.com/wiki/BackwardsIncompatibleChanges#lighttpdfastcgiandothers
-FORCE_SCRIPT_NAME = ''
-
 # TINYMCE_JS_URL (default: settings.MEDIA_URL + 'js/tiny_mce/tiny_mce.js')
 #     The URL of the TinyMCE javascript file.
 # TINYMCE_JS_ROOT (default: settings.MEDIA_ROOT + 'js/tiny_mce')
@@ -225,3 +207,12 @@ COMMENTS_ALLOW_PROFANITIES = True
 #CAPTCHA_IMAGE_BEFORE_FIELD = True
 #CAPTCHA_DICTIONARY_MIN_LENGTH = 0
 #CAPTCHA_DICTIONARY_MAX_LENGTH = 99
+
+
+try:
+    LOCAL_SETTINGS
+except NameError:
+    try:
+        from local_settings import *
+    except ImportError:
+        pass
