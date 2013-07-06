@@ -68,11 +68,11 @@
     </div>
     <div class="column250">
         <div class="content">
-            <h3 class='h3-regular'>Languages/</h3>
+            <h3 class='h3-regular'>Tags/</h3>
             <ul class="side-menu">
-                {% get_all_languages as languages %}
-                {% for language in languages %}
-                     <li><a href="{% url ny-archive-filtered 'language' language.identifier %}">{{ language.name }}</a></li>
+                {% get_all_tags as tags %}
+                {% for tag in tags %}
+                     <li><a href="{% url ny-archive-filtered 'tag' tag.identifier %}">{{ tag.name }}</a></li>
                 {% endfor %}
             </ul>
             <h3 class='h3-regular'>Types/</h3>
@@ -82,11 +82,11 @@
                      <li><a href="{% url ny-archive-filtered 'type' type.identifier %}">{{ type.name }}</a></li>
                 {% endfor %}
             </ul>
-            <h3 class='h3-regular'>Tags/</h3>
+            <h3 class='h3-regular'>Languages/</h3>
             <ul class="side-menu">
-                {% get_all_tags as tags %}
-                {% for tag in tags %}
-                     <li><a href="{% url ny-archive-filtered 'tag' tag.identifier %}">{{ tag.name }}</a></li>
+                {% get_all_languages as languages %}
+                {% for language in languages %}
+                     <li><a href="{% url ny-archive-filtered 'language' language.identifier %}">{{ language.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
