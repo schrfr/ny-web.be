@@ -15,7 +15,7 @@ class PrintIssueAdmin(admin.ModelAdmin):
     """
     PrintIssue Model Admin class.
     """
-    list_display = ('title', 'number')
+    list_display = ('title', 'magazine', 'number')
     prepopulated_fields = {"identifier": ("title", "number")}
     inlines = [PrintIssueOnlineTextInline,]
     fieldsets = (
