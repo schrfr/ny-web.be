@@ -125,6 +125,7 @@ INSTALLED_APPS = (
     'sitesettings',
     'chunks',
     'captcha',
+    'south',
 )
 
 # DATE_FORMAT = 'F Y, the jS'
