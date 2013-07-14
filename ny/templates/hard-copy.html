@@ -3,9 +3,9 @@
 {% load fb_versions %}
 
 {% block path %}<h1>Print Issues/</h1>{% endblock %}
-{# {% block subpath %} #}
-{#     <h2>nY #{{ current_issue.number }}, Vlaam Hotelwezen</h2> #}
-{# {% endblock %} #}
+{% block subpath %}
+    <h2>{{ magazine.title }}</h2>
+{% endblock %}
 
 {% block extrastyle %}
     <style type="text/css" media="screen">

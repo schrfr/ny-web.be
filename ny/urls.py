@@ -27,14 +27,8 @@ urlpatterns += patterns('ny.views',
     url(r'^about/(?P<iso_code>\w{2})/$', 'about', {}, name="ny-about"),
 )
 
-try: # Returns the absolute URL of the last PrintIssue
-    last_issue = PrintIssue.objects.order_by('-pub_date')[0]
-    last_issue_url = last_issue.get_absolute_url();
-except: # Redirects to the home page
-    last_issue_url = "/"
     
 urlpatterns += patterns('django.views.generic.simple',
-    url(r'^print-issues/$', 'redirect_to', {'url': last_issue_url, 'permanent': False}, name='ny-hard-copy'),
     url(r'^workshop/$', 'direct_to_template', {'template': 'workshop.html'}, name='ny-workshop'),
 )
 
@@ -43,7 +37,9 @@ urlpatterns += patterns('links.views',
 )
 
 urlpatterns += patterns('hardcopies.views',
-    url(r'^print-issues/(?P<slug>[-\w]+)/$', 'hard_copy', {}, name="ny-hard-copy-detail"),
+    url(r'^print-issues/$', 'archive_redirect', {}),
+    url(r'^print-issues/(?P<slug>[-\w]+)/$', 'archive_redirect', {}, name="ny-hard-copy"),
+    url(r'^print-issues/(?P<magazine_slug>[-\w]+)/(?P<issue_slug>[-\w]+)/$', 'hard_copy', {}, name="ny-hard-copy-detail"),
 )
 
 urlpatterns += patterns('library.views',

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from hardcopies.models import PrintIssue, PrintIssueOnlineText
+from hardcopies.models import Magazine, PrintIssue, PrintIssueOnlineText
 from hardcopies.forms import PrintIssueForm
 
 
@@ -20,9 +20,10 @@ class PrintIssueAdmin(admin.ModelAdmin):
     inlines = [PrintIssueOnlineTextInline,]
     fieldsets = (
         (None, {
-            'fields': (('title', 'number'), 'identifier', 'pub_date', 'cover', 'summary'),
+            'fields': (('title', 'number'), 'magazine', 'identifier', 'pub_date', 'cover', 'summary'),
         }),
     )
     
 
+admin.site.register(Magazine)
 admin.site.register(PrintIssue, PrintIssueAdmin, form=PrintIssueForm)

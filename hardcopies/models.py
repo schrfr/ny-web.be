@@ -4,6 +4,15 @@ from tinymce import models as tinymce_models
 from filebrowser.fields import FileBrowseField
 from library.models import Text
 
+class Magazine(models.Model):
+    """
+    Describes a magazine for which print issues can exist
+    """
+    title      = models.CharField(max_length=50, verbose_name=_('Title'), blank=True)
+    identifier = models.SlugField(verbose_name=_('Identifier'), unique=True, help_text=_('Unique identifier. Allows a constant targeting of the issue'))
+
+    def __unicode__(self):
+        return u'%s' % self.title
 
 class PrintIssue(models.Model):
     """
@@ -12,21 +21,17 @@ class PrintIssue(models.Model):
     title      = models.CharField(max_length=50, verbose_name=_('Title'), blank=True)
     number     = models.PositiveIntegerField(max_length=3, verbose_name=_('Issue Number'), null=True, blank=True)
     pub_date   = models.DateField(verbose_name=_('Publication Date'), help_text=_('Publication date'))
+    magazine   = models.ForeignKey(Magazine, verbose_name=_('Magazine'), related_name='magazine')
     cover      = FileBrowseField(max_length=200, directory="covers/", extensions=['.jpg', '.jpeg', '.gif','.png'], 
                                  format='Image')
     identifier = models.SlugField(verbose_name=_('Identifier'), unique=True, help_text=_('Unique identifier. Allows a constant targeting of the issue'))
     summary    = tinymce_models.HTMLField(verbose_name=_('infos'), help_text=_('Enter here your custom text'), blank=True)
     
-    # def get_absolute_url(self):
-    #     return permalink('ny-hard-copy-detail', (), {'slug': self.identifier})
-    # get_absolute_url = permalink(_get_absolute_url)
-    
     def get_absolute_url(self):
-        return "/print-issues/%s/" % self.identifier
+        return "/print-issues/%s/%s/" % (self.magazine.identifier, self.identifier)
     
     def __unicode__(self):
         return u'%s %s' % (getattr(self, "name", ""), getattr(self, "number", ""))
-
 
 class PrintIssueOnlineText(models.Model):
     """
