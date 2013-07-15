@@ -13,7 +13,7 @@ def hard_copy(request, issue_slug, magazine_slug='ny'):
     """
     current_issue = get_object_or_404(PrintIssue, identifier=issue_slug)
     magazine = get_object_or_404(Magazine, identifier=magazine_slug)
-    other_issues  = PrintIssue.objects.order_by('-pub_date').filter(magazine__identifier=magazine_slug)
+    other_issues  = PrintIssue.objects.order_by('-number').filter(magazine__identifier=magazine_slug)
     online_texts  = Text.objects.filter(print_issues__print_issue__identifier=issue_slug).order_by('-pub_date')
     
     my_dict = {
