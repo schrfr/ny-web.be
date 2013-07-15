@@ -21,7 +21,7 @@
 {% block content %}
 <div id="current-issue" class="column500">
     <div class="content">
-        <h2>#{{ current_issue.number }}</h2>                
+        <h2>{% if magazine.identifer == 'ny' %}#{% endif %}{{ current_issue.number }}</h2>
         <p class="title">{{ current_issue.title }}</p>
         <img id="current-cover" src="{% version current_issue.cover 'medium' %}" alt="nY #{{ current_issue.number }} {{ current_issue.title }}" />            
     <br style="clear: both;" />

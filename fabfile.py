@@ -1,9 +1,12 @@
-from fabric.api import run, cd, env, prefix
+from fabric.api import run, cd, env, local
 
 
 env.hosts = ['ny-ny@ny-web.be']
 env.path = '/home/ny-ny/apps/ny/'
 
+def getdb():
+    with cd(env.path):
+        local('/usr/bin/scp ny-ny@ny-web.be:/home/ny-ny/apps/ny/ny/ny.db ny/')
 
 def deploy():
     with cd(env.path):
