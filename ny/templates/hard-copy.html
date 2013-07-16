@@ -58,7 +58,7 @@
                         <img src="{% version other_issue.cover 'small' %}" alt="#{{ other_issue.number }} {{ other_issue.title }}"/>
                     </a>
                 </dt>
-                <dd><p class="number"><a href="{{other_issue.get_absolute_url}}">#{{ other_issue.number }}</a></p>
+                <dd><p class="number"><a href="{{other_issue.get_absolute_url}}">{% if magazine.identifier == 'ny' %}#{% endif %}{{ other_issue.number }}</a></p>
                     <p class="title"><a href="{{other_issue.get_absolute_url}}">{{ other_issue.title }}</a></p></dd>
             </dl>
         {% endfor %}
