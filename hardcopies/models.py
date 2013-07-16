@@ -19,7 +19,7 @@ class PrintIssue(models.Model):
     Describes a print issue.
     """
     title      = models.CharField(max_length=50, verbose_name=_('Title'), blank=True)
-    number     = models.DecimalField(max_digits=6, decimal_places=2, verbose_name=_('Issue Number'))
+    number     = models.DecimalField(max_digits=5, decimal_places=1, verbose_name=_('Issue Number'))
     pub_date   = models.DateField(verbose_name=_('Publication Date'), help_text=_('Publication date'))
     magazine   = models.ForeignKey(Magazine, verbose_name=_('Magazine'), related_name='magazine')
     cover      = FileBrowseField(max_length=200, directory="covers/", extensions=['.jpg', '.jpeg', '.gif','.png'], 

@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import datetime
+from decimal import Decimal
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+
 
 
 class Migration(SchemaMigration):
@@ -10,7 +12,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
 
         # Changing field 'PrintIssue.number'
-        db.alter_column('hardcopies_printissue', 'number', self.gf('django.db.models.fields.DecimalField')(default=0.0, max_digits=5, decimal_places=1))
+        db.alter_column('hardcopies_printissue', 'number', self.gf('django.db.models.fields.DecimalField')(default=Decimal('0.0'), max_digits=5, decimal_places=1))
 
     def backwards(self, orm):
 
