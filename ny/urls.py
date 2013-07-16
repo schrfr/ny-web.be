@@ -25,6 +25,10 @@ urlpatterns += patterns('django.contrib.syndication.views',
 urlpatterns += patterns('ny.views',
     url(r'^dereactor/$', 'dereactor', {}, name="ny-dereactor"),
     url(r'^about/(?P<iso_code>\w{2})/$', 'about', {}, name="ny-about"),
+    url(r'^order/$', 'order', {}, name="ny-order"),
+    url(r'^order/availability/$', 'availability', {}, name="ny-availability"),
+    url(r'^404$', 'render_404', {}, name="ny-404"),
+
 )
 
     

@@ -10,12 +10,15 @@
 .column625 { width: 62.5%; float: left; }
 .column750 { width: 75.0%; float: left; }
 .column875 { width: 87.5%; float: left; }
+.column875 { width: 87.5%; float: left; }
+.column1000 { width: 100%; }
 
 .column333 { width: 33.333%; float: left; }
 .column666 { width: 66.666%; float: left; }
 
 
 .content { margin: 0 17px 0 17px; }
+p { margin-bottom: 17px; }
 
 html { font-size: 14px; }
 body { font-family: Georgia, serif; line-height:  1.3em; letter-spacing: 0.2px; }

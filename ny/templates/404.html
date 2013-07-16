@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load chunks %}
 
 {% block path %}<h1>404/</h1>{% endblock %}
 
@@ -6,7 +7,7 @@
 <div id="404">
     <div class="column500">
         <div class="content">
-            De door u opgevraagde pagina kon niet gevonden worden.
+            {% chunk "404-en"%}
         </div>
     </div>
 </div>

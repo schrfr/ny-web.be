@@ -25,3 +25,12 @@ def about(request, iso_code):
         'author_list': Person.objects.filter(authors_set__isnull=False).distinct(), 
     }
     return render_to_response('about.html', my_dict, context_instance=RequestContext(request))
+
+def order(request):
+    return render_to_response('order.html', context_instance=RequestContext(request))
+
+def availability(request):
+    return render_to_response('availability.html', context_instance=RequestContext(request))
+
+def render_404(request):
+    return render_to_response('404.html', context_instance=RequestContext(request))

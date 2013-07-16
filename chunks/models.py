@@ -13,8 +13,8 @@ class Chunk(models.Model):
     content = models.TextField(blank=True)
     
     class Meta:
-        verbose_name = _('About Page')
-        verbose_name_plural = _('About Page')
+        verbose_name = _('Content Chunk')
+        verbose_name_plural = _('Content Chunks')
 
     def __unicode__(self):
         return u"%s" % (self.key,)

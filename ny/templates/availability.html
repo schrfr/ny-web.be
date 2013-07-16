@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load chunks%}
+
+{% block path %}<h1><a href="{% url "ny-order" %}">Order</a>/</h1>{% endblock %}
+{% block subpath %}<h2>Availability</h2>{% endblock %}
+
+{% block content %}
+<div id="404">
+    <div class="">
+        <div class="content column750">
+            <iframe style="overflow: hidden;" width="440" height="1306" src="https://spreadsheets0.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=0AukFlRrG5aTcdE5vUDZhWkFlNnhJNUJBSWM3MFRrRVE&single=true&gid=0&range=A1:I74&output=html" />
+        </div>
+    </div>
+</div>
+{% endblock %}
+
