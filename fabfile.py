@@ -11,4 +11,5 @@ def getdb():
 def deploy():
     with cd(env.path):
         run('git pull origin master')
-    run('/home/ny-ny/init/ny restart') 
+        run('/home/ny-ny/venv/bin/python manage.py collectstatic --noinput')
+        run('/home/ny-ny/init/ny restart') 

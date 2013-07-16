@@ -175,7 +175,7 @@ a { color: black; }
 
 
             #current-issue .title,
-            #other-issues .title { color: black; font-weight: bold; font-size: 11px; line-height: 11px; height: 40px; }
+            #other-issues .title { color: black; font-weight: bold; font-size: 11px; line-height: 11px; height: 35px; }
             #current-issue .title,
             #other-issues .title  a { color: #22B7A8; }
 
