@@ -191,3 +191,17 @@ a { color: black; }
             /* COMMENT */
             #comment {  }
             #comment a { color: rgb(34,183,168); text-decoration: none; }
+            
+            
+#adminbar {
+    font-style: italic;
+}
+.admin, .admin a {
+    background-color: #fd297e;
+    color: white;
+    font-style: italic;
+}
+
+.textinfo {
+    float: right;
+}

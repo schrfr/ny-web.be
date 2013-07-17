@@ -60,9 +60,16 @@
     
 {% endblock extrastyle %}
 
+{% block adminbar %}
+    {% if not text.publish %}Dit is een kladversie, alleen te bekijken voor ingelogde gebruikers. <a href="{% url admin:library_text_change text.id %}" class="admin">Bewerken</a>.{% endif %}
+    {% if text.publish and text.future %}Deze tekst is alleen nog te bekijken door ingelogde gebruikers, 
+    ze zal op <span class="admin">{{ text.pub_date|date:'j/m/Y' }}</span> publiek worden.{% endif %}
+{% endblock %}
+
+
 {% block content %}
 <script type="text/javascript" charset="utf-8" src='{{ STATIC_URL }}js/toolbox.js'></script> 
-<div id="text" style="clear: both;">
+<div id="text" style="clear: both;" class="{% if not text.publish %}draft{% endif %}{% if text.future %} future{% endif %}">
     <div id="text-header">
         <div class="column500">
             <div id="text-metadata" class="content">

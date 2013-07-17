@@ -33,6 +33,11 @@ def text(request, category, slug):
     path = u"%s%s/" % (path[0].capitalize(), path[1:])
     text = get_object_or_404(Text, zone__identifier=category, identifier=slug)
     
+    # Only authenticated users get to access unpublished texts:
+    if not text.publish or text.future:
+        if not request.user.is_authenticated():
+            raise Http404
+    
     related_texts = Text.objects.filter(from_texts__from_text__identifier=text.identifier).order_by('-pub_date')
     
     ctx = {
@@ -55,8 +60,12 @@ def timeline(request):
     * the texts posted within the last n days.
     * the stickies for each category
     """
-    oldest = datetime.date.today()-datetime.timedelta(days=150)
-    text_list = Text.objects.filter(pub_date__gte=oldest).filter(publish=True).order_by('-pub_date')
+    today = datetime.date.today()
+    oldest = today - datetime.timedelta(days=150)
+    text_list = Text.objects.filter(pub_date__gte=oldest).order_by('-pub_date')
+    if not request.user.is_authenticated():
+        # Only authenticated users get to see future posts and draft posts
+        text_list = text_list.filter(publish=True).filter(pub_date__lte=today)
     stickies = StickyText.objects.all()
     try:
         extra_context = {

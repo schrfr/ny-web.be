@@ -1,5 +1,6 @@
 # *-* encoding: utf-8 *-*
 
+from datetime import date
 from django.db import models
 from django.db.models import Q
 from django.contrib.contenttypes.models import ContentType
@@ -81,6 +82,9 @@ class Text(models.Model):
     zone                = models.ForeignKey(Zone, verbose_name=_('Publish under'), help_text=_('Select the zone where the text should appear'))
     body                = tinymce_models.HTMLField(verbose_name=_('Body'), 
                                         help_text=_('<div id="paragraphs_warning">Modifying a text might delete its current paragraph comments, if any!</div>'))
+    
+    def future(self):
+        return self.pub_date > date.today()
     
     @property
     def has_paragraphs(self):

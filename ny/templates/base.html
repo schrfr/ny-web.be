@@ -66,6 +66,11 @@
     
 </head>
 <body>
+    {% if user.is_authenticated %}
+    <div id="adminbar">
+        Ingelogd: <span class="username admin">{{ user.username }}</span> <span class="textinfo">{% block adminbar %}{% endblock %}</span>
+    </div>
+    {% endif %}
     <div id="page">
         
         {% if big_banner %}
