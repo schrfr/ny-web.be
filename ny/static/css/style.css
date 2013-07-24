@@ -156,7 +156,6 @@ h6 {
     font-family: "Verdana";
     font-weight: bold;
     font-size: 10em;
-    line-height: -2px;
     text-decoration: none;
     letter-spacing: -0.1em;
 }
@@ -338,7 +337,6 @@ h6 {
     margin-bottom: 0;
     margin-top: 17px;
 }
-/*                #text h3 { font-size: 2em; line-height: 34px; margin-bottom: 17px; }*/
 #text #general-comment-form {
     margin-bottom: 34px;
 }
@@ -362,8 +360,7 @@ h6 {
 }
 
 /* LIST */
-/*            #tag-menu { font-size: 2em; line-height: 34px; }
- #tag-menu li a { color: gray; text-decoration: none; } */
+
 .side-menu {
     margin-bottom: 17px;
 }
@@ -371,7 +368,6 @@ h6 {
     color: #22B7A8;
     text-decoration: underline;
 }
-/*            .side-menu li { padding-left: 5px; text-indent: -5px; }*/
 
 /* ABOUT */
 #about {
