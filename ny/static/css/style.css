@@ -121,6 +121,12 @@ h3 {
 h4 {
     font-size: 1em;
 }
+h5 {
+    font-size: .83em
+}
+h6 {
+    font-size: .75em
+}
 .main-menu li a {
     text-decoration: none;
 }
@@ -288,10 +294,10 @@ h4 {
     margin-top: 34px;
     margin-bottom: 34px;
 }
-#text-body p {
+#text-body p, #tinymce p {
     margin-bottom: 17px;
 }
-#text-body img {
+#text-body img, #tinymce img {
     margin-right: 17px;
     margin-bottom: 17px;
     margin-top: 0;
@@ -421,14 +427,13 @@ h4 {
 #online-texts h1 {
     margin-bottom: 1em;
 }
-/*#other-issues { padding-bottom: 17px; margin-bottom: 17px; border-bottom: 1px dotted #22B7A8;}*/
+
 #other-issues .number {
     font-size: 28px;
     color: grey;
     line-height: 34px;
     font-weight: bold;
 }
-/*#other-issues .number a { color: grey; }*/
 
 #current-issue .title, #other-issues .title {
     color: black;
@@ -463,6 +468,8 @@ h4 {
     color: rgb(34,183,168);
     text-decoration: none;
 }
+
+/* ADMIN BAR */
 
 #adminbar {
     font-style: italic;
