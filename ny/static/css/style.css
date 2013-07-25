@@ -285,6 +285,28 @@ h6 {
 #text-metadata, #text-metadata a {
     color: rgb(34,183,168);
 }
+
+.text-authors {
+    font-size: 1.4em;
+    color: #000;
+}
+
+#text .text-authors {
+    margin-bottom: 17px;
+    line-height: 28px;
+}
+
+#article .text-authors {
+    margin-bottom: 6px;
+}
+
+.article-metadata {
+    margin-bottom: 4px;
+}
+.article-metadata p {
+    line-height: 14px;
+}
+
 #text-table, #text-body {
     clear: left;
     margin-top: 34px;
