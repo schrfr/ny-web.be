@@ -34,7 +34,7 @@ def text(request, category, slug):
     text = get_object_or_404(Text, zone__identifier=category, identifier=slug)
     
     # Only authenticated users get to access unpublished texts:
-    if not text.publish or text.future:
+    if not text.publish or text.future():
         if not request.user.is_authenticated():
             raise Http404
     
