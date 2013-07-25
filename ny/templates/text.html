@@ -71,7 +71,7 @@
 <script type="text/javascript" charset="utf-8" src='{{ STATIC_URL }}js/toolbox.js'></script> 
 <div id="text" style="clear: both;" class="{% if not text.publish %}draft{% endif %}{% if text.future %} future{% endif %}">
     <div id="text-header">
-        <div class="column500">
+        <div class="column625">
             <div id="text-metadata" class="content">
                 {% include "article-metadata.html" %}
                 <div id="text-toolbox">
@@ -81,7 +81,7 @@
             </div>
         </div>
         {% if text.paragraph_comments %}
-            <div class="column500">
+            <div class="column625">
                 <ul id="comment-toolbox" class="content">
                     {% ifequal view "none"%}
                         <li><a href="?view=all">Show paragraph comments</a></li>
@@ -129,7 +129,7 @@
         </table>
 
     {% else %}
-        <div id="text-body" {% ifnotequal text.document_type.name 'Poetry' %}class="column500"{% endifnotequal %}>
+        <div id="text-body" {% ifnotequal text.document_type.name 'Poetry' %}class="column750"{% endifnotequal %}>
             <div class="content">
                 {{ text.body|safe }}
             </div>            
