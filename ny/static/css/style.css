@@ -1,8 +1,7 @@
 /* DEBUG */
 /*body { background-image: url("grid_17px.png"); background-repeat: repeat; }
  */
-/** { -moz-box-sizing:  border-box; }
- */
+
 .column125 {
     width: 12.5%;
     float: left;
@@ -84,6 +83,7 @@ a {
 }
 
 #page {
+    min-width: 50em;
     max-width: 75em;
     margin: 34px 34px 34px 68px;
 }
