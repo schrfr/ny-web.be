@@ -16,6 +16,10 @@ class Person(models.Model):
     
     @property
     def full_name(self):
+        if not self.last_name:
+            return self.first_name
+        if not self.first_name:
+            return self.last_name
         return u'%s %s' % (self.first_name, self.last_name)
     
     def __unicode__(self):
