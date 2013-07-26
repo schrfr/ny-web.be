@@ -11,7 +11,7 @@
 {% block description %}{{ text.description }}{% endblock %}
 {% block dcdescription %}{{ text.description }}{% endblock %}
 
-{% block path %}<h2>{{ path }}</h2>{% endblock %}
+{% block path %}<h2><a href="{% url ny-list text.zone.identifier %}" title="Nieuws en debat">{{ path }}</a></h2>{% endblock %}
 {% block subpath %}<h1>{{ text.title }}</h1>{% endblock %}
 
 {% block extrastyle %}
