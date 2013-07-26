@@ -132,10 +132,22 @@ h6 {
 .main-menu li a {
     text-decoration: none;
 }
+
+.main-menu li li {
+    margin: 0 0 0 17px;
+}
 .main-menu li a:hover {
     color: white;
     background-color: black;
 }
+
+.meta-list-item {
+    font-style: italic;
+}
+.meta-list-item:after {
+    content: ":";
+}
+
 .main-menu input {
     border-style: none;
     background-color: lightgray;
@@ -149,9 +161,15 @@ h6 {
 }
 #search-submit {
     padding-left: 0.25em;
+    display: inline-block;
 }
 #search-text {
     padding-right: 0.25em;
+    display: inline-block;
+}
+
+.main-menu.extra {
+    text-align: right;
 }
 
 #logo {

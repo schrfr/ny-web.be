@@ -103,54 +103,64 @@
                     </div>
                 </div>
             </div>
+            <div class="column125">
+                <ul class="main-menu">
+                    <li><a href="{% url ny-list 'showtime' %}" title="Nieuws en debat">Showtime</a></li>
+                    <li><a href="{% url ny-list 'untimely-meditations' %}" title="Korte reflecties">Untimely Meditations</a></li>
+                    <li><a href="{% url ny-list 'transitzone' %}" title="Zone for non-Dutch readers and writers">Transitzone</a></li>
+                    <li><a href="{% url ny-list 'long-hard-looks' %}" title="Kritieken">Long Hard Looks</a></li>
+                </ul>
+            </div>
+
             <div class="column250">
-                <ul class="main-menu content">
-                    <li> 
-                        <a href="{% url ny-about 'nl' %}">About nl</a> | 
-                        <a href="{% url ny-about 'fr' %}">fr</a> | 
-                        <a href="{% url ny-about 'en' %}">en</a>
+                <ul class="main-menu">
+                    <li class="meta-list-item">Issues</li>
+                    <li>
+                        <ul>
+                            <li><a href="{% url ny-hard-copy 'ny' %}">nY</a></li>
+                            <li><a href="{% url ny-hard-copy 'yang' %}">yang 1997-2008</a></li>
+                            <li><a href="{% url ny-hard-copy 'freespace-nieuwzuid' %}">freespace Nieuwzuid 1999-2008</a></li>
+                        </ul>
                     </li>
-                    <li><a href="{% url ny-hard-copy 'ny' %}">nY Issues</a></li>
+                </ul>
+            </div>
+
+            <div class="column125">
+                <ul class="main-menu">
+                    <li class="meta-list-item">About</li>
+                    <li>
+                        <ul>
+                            <li><a href="{% url ny-about 'nl' %}">nl</a></li>
+                            <li><a href="{% url ny-about 'fr' %}">fr</a></li>
+                            <li><a href="{% url ny-about 'en' %}">en</a></li>
+                        </ul>
+                    </li>
                     <li><a href="{% url ny-archive-all %}" id="link-archive">Web Archive</a></li>
                     <li><a href="{% url ny-links %}">Links</a></li>
                     <li><a href="{% url ny-feed-latest %}">RSS</a></li>
                 </ul>
             </div>
-            <div class="column250">
-                <ul class="main-menu content">
-                    <li><a href="{% url ny-list 'showtime' %}" title="Nieuws en debat">Showtime</a></li>
-                    <li><a href="{% url ny-list 'untimely-meditations' %}" title="Korte reflecties">Untimely Meditations</a></li>
-                    <li><a href="{% url ny-list 'transitzone' %}" title="Zone for non-Dutch readers and writers">Transitzone</a></li>
-                    <li><a href="{% url ny-list 'long-hard-looks' %}" title="Kritieken">Long Hard Looks</a></li>
-                    {# <li><a href="">Workshop</a></li> #}
-                    <li style="margin-top: 18px">
-                        <form action="{% url ny-search %}" method="get" accept-charset="utf-8">
-                            {# <div> #}
-                            {#     <div id="search-submit"> #}
-                            {#         <input type="submit" value="Search" /> #}
-                            {#     </div> #}
-                            {#     <div id="search-text"> #}
-                            {#         <input type="text" name="query" value="" id="search" /> #}
-                            {#     </div> #}
-                            {# </div> #}
-                            <table>
-                                <tr>
-                                    <td id="search-text"><input type="text" name="query" value="" id="search" /></td>
-                                    <td id="search-submit"><input type="submit" value="Search" /></td>
-                                </tr>
-                            </table>
-                        </form>
-                    </li>
-                    <li>
-                        <a href="http://www.fondsvoordeletteren.be/">
-                            <img src="{{ STATIC_URL }}images/logos/vlf.jpg" alt="Vlaams Fonds Voor De Letteren Logo" />
-                        </a> 
-                        <a href="http://www.oost-vlaanderen.be/public/">
-                            <img src="{{ STATIC_URL }}images/logos/o-vl.jpg" alt="Provincie Oost-Vlaanderen" />
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
+        <div class="column500">
+            <ul class="main-menu extra">
+                <li style="margin-top: 18px">
+                    <form action="{% url ny-search %}" method="get" accept-charset="utf-8">
+                                <span id="search-text"><input type="text" name="query" value="" id="search" /></span>
+                                <span id="search-submit"><input type="submit" value="Search" /></span>
+                    </form>
+                </li>
+                <li>
+                    <a href="http://www.fondsvoordeletteren.be/">
+                        <img src="{{ STATIC_URL }}images/logos/vlf.jpg" alt="Vlaams Fonds Voor De Letteren Logo" />
+                    </a> 
+                    <a href="http://www.oost-vlaanderen.be/public/">
+                        <img src="{{ STATIC_URL }}images/logos/o-vl.jpg" alt="Provincie Oost-Vlaanderen" />
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
         </div>
         <div style="clear: both"></div>
         
