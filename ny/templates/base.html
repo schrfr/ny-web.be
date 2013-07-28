@@ -103,7 +103,7 @@
                     </div>
                 </div>
             </div>
-            <div class="column125">
+            <div class="column150">
                 <ul class="main-menu">
                     <li><a href="{% url ny-list 'showtime' %}" title="Nieuws en debat">Showtime</a></li>
                     <li><a href="{% url ny-list 'untimely-meditations' %}" title="Korte reflecties">Untimely Meditations</a></li>
@@ -112,29 +112,21 @@
                 </ul>
             </div>
 
-            <div class="column250">
+            <div class="column150">
                 <ul class="main-menu">
-                    <li class="meta-list-item">Issues</li>
                     <li>
                         <ul>
-                            <li><a href="{% url ny-hard-copy 'ny' %}">nY</a></li>
-                            <li><a href="{% url ny-hard-copy 'yang' %}">yang 1997-2008</a></li>
-                            <li><a href="{% url ny-hard-copy 'freespace-nieuwzuid' %}">freespace Nieuwzuid 1999-2008</a></li>
+                            <li><a href="{% url ny-hard-copy 'ny' %}">nY issues</a></li>
+                            <li><a href="{% url ny-hard-copy 'yang' %}">yang 1993-2008</a></li>
+                            <li><a href="{% url ny-hard-copy 'freespace-nieuwzuid' %}">fNZ 1999-2008</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
 
-            <div class="column125">
+            <div class="column150">
                 <ul class="main-menu">
-                    <li class="meta-list-item">About</li>
-                    <li>
-                        <ul>
-                            <li><a href="{% url ny-about 'nl' %}">nl</a></li>
-                            <li><a href="{% url ny-about 'fr' %}">fr</a></li>
-                            <li><a href="{% url ny-about 'en' %}">en</a></li>
-                        </ul>
-                    </li>
+                    <li class="">About: <a href="{% url ny-about 'nl' %}">nl</a> <a href="{% url ny-about 'fr' %}">fr</a> <a href="{% url ny-about 'en' %}">en</a></li>
                     <li><a href="{% url ny-archive-all %}" id="link-archive">Web Archive</a></li>
                     <li><a href="{% url ny-links %}">Links</a></li>
                     <li><a href="{% url ny-feed-latest %}">RSS</a></li>

@@ -6,6 +6,10 @@
     width: 12.5%;
     float: left;
 }
+.column150 {
+    width: 15%;
+    float: left;
+}
 .column250 {
     width: 25.0%;
     float: left;
