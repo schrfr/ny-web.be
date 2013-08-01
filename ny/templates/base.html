@@ -103,12 +103,13 @@
                     </div>
                 </div>
             </div>
+
             <div class="column150">
                 <ul class="main-menu">
-                    <li><a href="{% url ny-list 'showtime' %}" title="Nieuws en debat">Showtime</a></li>
-                    <li><a href="{% url ny-list 'untimely-meditations' %}" title="Korte reflecties">Untimely Meditations</a></li>
-                    <li><a href="{% url ny-list 'transitzone' %}" title="Zone for non-Dutch readers and writers">Transitzone</a></li>
-                    <li><a href="{% url ny-list 'long-hard-looks' %}" title="Kritieken">Long Hard Looks</a></li>
+                    <li class="">About: <a href="{% url ny-about 'nl' %}">nl</a> <a href="{% url ny-about 'fr' %}">fr</a> <a href="{% url ny-about 'en' %}">en</a></li>
+                    <li><a href="{% url ny-archive-all %}" id="link-archive">Web Archive</a></li>
+                    <li><a href="{% url ny-links %}">Links</a></li>
+                    <li><a href="{% url ny-feed-latest %}">RSS</a></li>
                 </ul>
             </div>
 
@@ -126,10 +127,10 @@
 
             <div class="column150">
                 <ul class="main-menu">
-                    <li class="">About: <a href="{% url ny-about 'nl' %}">nl</a> <a href="{% url ny-about 'fr' %}">fr</a> <a href="{% url ny-about 'en' %}">en</a></li>
-                    <li><a href="{% url ny-archive-all %}" id="link-archive">Web Archive</a></li>
-                    <li><a href="{% url ny-links %}">Links</a></li>
-                    <li><a href="{% url ny-feed-latest %}">RSS</a></li>
+                    <li><a href="{% url ny-list 'showtime' %}" title="Nieuws en debat">Showtime</a></li>
+                    <li><a href="{% url ny-list 'untimely-meditations' %}" title="Korte reflecties">Untimely Meditations</a></li>
+                    <li><a href="{% url ny-list 'transitzone' %}" title="Zone for non-Dutch readers and writers">Transitzone</a></li>
+                    <li><a href="{% url ny-list 'long-hard-looks' %}" title="Kritieken">Long Hard Looks</a></li>
                 </ul>
             </div>
 
