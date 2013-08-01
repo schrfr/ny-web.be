@@ -1,5 +1,6 @@
 # TODO: only what is necessary 
 from django.http import HttpResponse
+from django.template import RequestContext
 from django.shortcuts import render_to_response
 # TODO: use requestcontext instead
 from django.conf import settings 
@@ -64,5 +65,5 @@ def share(request, slug):
         'form': form,
         'text': text,
         'MEDIA_URL': settings.MEDIA_URL,
-    })
+    }, context_instance=RequestContext(request))
 
