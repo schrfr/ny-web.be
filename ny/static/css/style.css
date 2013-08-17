@@ -351,6 +351,20 @@ a.focus.knop:hover {
     color: #000;
 }
 
+/* On the homepage, they get a different look: */
+td .text-authors {
+    padding: 2px 1px;
+    color: white;
+    background-color: rgb(34,183,168);
+    display: inline-block;
+}
+
+/* And there, if it’s highlighted articles, we do the normal look (because the title is already changed): */
+.highlighted .text-authors {
+    background-color: white;
+    color: black;
+}
+
 #text .text-authors {
     margin-bottom: 17px;
     line-height: 28px;

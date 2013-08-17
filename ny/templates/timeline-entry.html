@@ -4,16 +4,13 @@
 
 {% get_all_comments for text as all_comments_list %}
 
-<div class="timeline-entry{% if not text.publish %} draft{% endif %}{% if text.future %} future{% endif %} text.identifier">
+<div class="timeline-entry{% if not text.publish %} draft{% endif %}{% if text.future %} future{% endif %}{% if text.highlight %} highlighted{% endif %} text.identifier">
     
     {% if not text.publish %}<p class="draft admin">Deze tekst is in klad, en niet zichtbaar op de publiekssite. <a href="{% url admin:library_text_change text.id %}">Bewerken</a>.</p>{% endif %}
     {% if text.publish and text.future %}<p class="future admin">Deze tekst zal op {{ text.pub_date|date:'j/m/Y' }} zichtbaar worden op de publiekssite</p>{% endif %}
-    {# {% if text.id|in_list:stickies %} #}
-    {% if text.highlight %}
-        <p class="article-title"><a href="{{ text.get_absolute_url }}" class="highlighted-text">{{ text }}</a></p>
-    {% else %}
-        <p class="article-title"><a href="{{ text.get_absolute_url }}">{{ text }}</a></p>
-    {% endif %}
+        <p class="article-title">
+            <a href="{{ text.get_absolute_url }}"{% if text.highlight %} class="highlighted-text"{% endif %}>{{ text }}</a>
+        </p>
     
     <div class="article-metadata">
         {% include "article-metadata.html" %}
