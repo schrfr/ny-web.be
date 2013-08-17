@@ -36,7 +36,12 @@ def archive_redirect(request, slug='ny'):
         current_issue = get_object_or_404(PrintIssue, identifier=slug)
         url = current_issue.get_absolute_url()
         return redirect(url, permanent=True)
-        
-    last_issue = PrintIssue.objects.order_by('-pub_date').filter(magazine__identifier=slug)[0]
-    url = last_issue.get_absolute_url()
+    
+    if magazine.identifier == 'ny':
+        # For nY, we want the show the latest issue:
+        issue = PrintIssue.objects.order_by('-pub_date').filter(magazine__identifier=slug)[0]
+    else:
+        # for Yang and freespaceNieuwZuid we want to show a random issue:
+        issue = PrintIssue.objects.order_by('-pub_date').filter(magazine__identifier=slug).order_by('?')[0]
+    url = issue.get_absolute_url()
     return redirect(url)
