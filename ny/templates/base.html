@@ -94,7 +94,7 @@
                         <div class="path">
                             <span style="font-weight: bold;">website en tijdschrift voor literatuur, kritiek &amp; amusement, <br />
                             voorheen</span> <span style="font-style: italic;">yang &amp; freespace Nieuwzuid</span> <br/>
-                            <a href="{% url ny-hard-copy 'ny' %}">Nieuwste nummer &gt;</a>                                
+                            <a class="" href="{% url ny-hard-copy 'ny' %}">Nieuwste nummer &gt;</a>
                         </div>
                         
                         {% block path %}{% endblock path %}
@@ -110,6 +110,7 @@
                     <li><a href="{% url ny-archive-all %}" id="link-archive">Web Archive</a></li>
                     <li><a href="{% url ny-links %}">Links</a></li>
                     <li><a href="{% url ny-feed-latest %}">RSS</a></li>
+                    <li><a class="focus knop">Nu bestellen</a></li> <!-- href="{% url ny-order %}" -->
                 </ul>
             </div>
 
@@ -139,7 +140,7 @@
                 <li style="margin-top: 18px">
                     <form action="{% url ny-search %}" method="get" accept-charset="utf-8">
                                 <span id="search-text"><input type="text" name="query" value="" id="search" /></span>
-                                <span id="search-submit"><input type="submit" value="Search" /></span>
+                                <span id="search-submit"><input type="submit" class="knop" value="Search" /></span>
                     </form>
                 </li>
                 <li>

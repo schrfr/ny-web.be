@@ -160,9 +160,7 @@ h6 {
 .main-menu input[type="text"] {
     width: 100%;
 }
-.main-menu input[type="submit"] {
-    width: 4em;
-}
+
 #search-submit {
     padding-left: 0.25em;
     display: inline-block;
@@ -186,6 +184,41 @@ h6 {
 #logo:hover {
     color: rgb(34,183,168);
 }
+
+.knop {
+    display: inline-block;
+    position: relative;
+    top: 1px;
+    padding: 2px 8px;
+    color: #fff;
+    background: lightgray;
+    border-radius: 10px;
+    box-shadow: 0 -3px 0 rgba(0, 0, 0, .3) inset, 0 3px 1px rgba(0, 0, 0, .2);
+    text-decoration: none;
+}
+
+.focus.knop {
+    background-color: rgb(34,183,168);
+}
+
+.knop:active {
+    top: 2px;
+    box-shadow: 0 -3px 0 rgba(0, 0, 0, .3) inset, 0 0 1px rgba(0, 0, 0, .2);
+}
+
+.focus.knop:active {
+    background-color: rgb(34,183,168);
+}
+
+a.knop:hover {
+    background: lightgrey !important;
+}
+
+a.focus.knop:hover {
+    background: rgb(34,183,168) !important;
+}
+
+
 .path {
     margin-top: 8px;
     margin-bottom: 20px;
