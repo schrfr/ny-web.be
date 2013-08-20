@@ -2,6 +2,11 @@
 /*body { background-image: url("grid_17px.png"); background-repeat: repeat; }
  */
 
+@font-face {
+  font-family: 'nY';
+  src: url('../type/CenturySchL-nY-Roma.ttf');
+}
+
 .column125 {
     width: 12.5%;
     float: left;
@@ -175,7 +180,7 @@ h6 {
 }
 
 #logo {
-    font-family: "Verdana";
+    font-family: 'nY', "Verdana";
     font-weight: bold;
     font-size: 10em;
     text-decoration: none;
