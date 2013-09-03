@@ -73,6 +73,11 @@ ol, ul {
     padding-left: 17px;
 }
 
+blockquote {
+    padding-left: 17px;
+    border-left: 4px solid rgb(34,183,168);
+}
+
 a {
     color: black;
 }
