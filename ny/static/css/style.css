@@ -87,7 +87,7 @@ ol, ul {
     list-style: disc;
 }
 
-ul.side-menu {
+ul.side-menu, ul.content, ul.content ul {
     list-style: none;
 }
 
