@@ -70,7 +70,25 @@ body {
 }
 
 ol, ul {
+    list-style: none;
+}
+
+#tinymce ol, #tinymce ul .content ol, .content ul{
     padding-left: 17px;
+}
+
+#tinymce ol, .content ol{
+    padding-left: 17px;
+    list-style: decimal;
+}
+
+#tinymce ul, .content ul{
+    padding-left: 17px;
+    list-style: disc;
+}
+
+ul.side-menu {
+    list-style: none;
 }
 
 blockquote {
