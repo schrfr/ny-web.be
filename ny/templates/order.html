@@ -8,9 +8,11 @@
     <div class="">
         <div class="content column750">
             <p>{% chunk "order-nl" %}</p>
-            <iframe style="overflow: hidden;" width="638" height="1740" src="https://spreadsheets.google.com/a/ny-web.be/spreadsheet/viewform?formkey=dDZPNU56MFR0cWJZSnI0bzZ0VzV3aHc6MQ" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+            <script type="text/javascript" src="https://webforms.aboportal.nl/Form/areas/frontend/scripts/iframeResizer.min.js"></script>
+            <script> jQuery(function($){ $(".IframeSizeVer").iFrameResize([{ autoResize: true, enablePublicMethods: true, sizeWidth: false, log: true, interval: 36, checkOrigin: false }]); }) </script>
+            <iframe id="AboIframe" class="IframeSizeVer" src="https://webforms.aboportal.nl/Form/abonneerbe/ny-ABON/nl-NL?stylesheet=/Form/Areas/FrontEnd/Content/CSSalt/ny.css&codekorting=hide" width="100%" frameborder="0" scrolling="no"></iframe>
         </div>
     </div>
 </div>
 {% endblock %}
-
